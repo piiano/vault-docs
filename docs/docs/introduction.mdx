@@ -1,0 +1,63 @@
+---
+sidebar_position: 0
+sidebar_label: Introduction
+---
+
+import ThemedImage from '@theme/ThemedImage';
+import useBaseUrl from '@docusaurus/useBaseUrl';
+import Zoom from '@site/src/components/Zoom';
+
+
+# Introduction to Piiano Vault
+
+## Learn about the basic and advanced features of Piiano Vault.
+
+**Piiano Vault** is the platform the industry needs for managing and working with Personally Identifiable Information (**PII**), Payment Information and Protected Health Information (**PHI**) data whether in the cloud or on-prem. It's dedicated to securely storing sensitive personal information. It takes away the pain of understanding and implementing the security and privacy requirements of data and privacy rgulations such as General Data Protection Regulation (**GDPR**), California Consumer Privacy Act (**CCPA**), Health Insurance Portability and Accountability Act (**HIPAA**) and Payment Card Industry Data Security Standard (**PCI**).
+
+Vault is **made for developers**, with simplicity a top priority. It has several [editions](architecture/editions), and can be deployed anywhere - on your own machine for development and testing, on staging environment and in production to support large workloads. Vault is self-hosted, meaning data stays in your environment. Integration is straightforward, using the [REST APIs](/api) and the `pvault` [Comnand line tool](/cli).
+
+Vault supports [semantic PII types](/guides/manage-collections-and-schemas/reference/data-types), such as name, email, SSN, credit card, KYC documents, etc. These PII types are being used as part of schema definition, which make Vault data-aware and enables it to be smart, with [tokenization](data-security/tokenization), [transformations](data-security/transformations), and [property encryption](data-security/property-encryption) features. For the first time, you can use personal data while inherently reducing its exposure and risk as much as possible. Using semantic data types also means the data is always tagged, and enable the vault to support data subject rights, such as Data Subject Access Request (DSAR) and the Right To Be Forgotten (RTBF).
+
+
+### Key features
+
+* Vault is dedicated to securely storing sensitive personal information. It takes away the pain of understanding and implementing the requirements of the data and privacy regulations, and empowers and encourages the implementation of security and privacy by design.
+
+* Vault can store full name, phone number, email address, home address, SSN, know your customer (KYC) documents, payment details, and many more. Vault is hardened against data leaks and credentials theft, and monitors and limits data access.
+
+* PII and PCI information have unique workflows and lifecycles. Vault natively supports these workflows and lifecycles while maximizing data protection, including searching, querying, and processing encrypted and protected information.
+
+* The security and privacy compliance requirements needed when storing PII, PCI, PHI and other types of sensitive information are built into Vault. For example, Vault includes encryption and key rotation, tokenization, tight access controls, full audit, individual privacy rights implementation, and more.
+
+* Vault also makes **pseudonymization** – the decoupling of PII from the original data sets to reduce privacy risk – easy and practical to implement.
+
+* Vault is built with developers in mind: making privacy engineering simple with APIs that enable straightforward integration of Vault into applications.
+
+For the first time, there's a specialized data store for sensitive personal information. Vault is deployed next to other data stores, so PII and PCI data stays within your account.
+
+Vault integrates with your applications, as other databases do.
+
+<Zoom>
+<ThemedImage sources={{
+  light: useBaseUrl('/img/vault-in-your-architecture-light.svg'),
+  dark: useBaseUrl('/img/vault-in-your-architecture-dark.svg'),
+}} alt="Piiano Vault in your architecture"/>
+</Zoom>
+
+
+### Use cases
+
+Here are some use cases that the full production version of Vault will enable:
+* **Reducing scope for privacy compliance (GDPR, CCPA, etc.) by pseudonymization of personal information** and keeping PIIs within a dedicated secure zone.
+* **Tokenizing and vaulting payment information** with maximum security and controls complying with PCI DSS.
+* **Storing sensitive personal and payment information**, such as social security numbers, bank account numbers, and credit card numbers. And enforcing advanced access controls, ensuring the data is highly secure and fully encrypted, keys get rotated frequently, and all access is fully audited.
+* **Tokenizing PII before streaming it into an analytics pipeline or a data lake** to reduce the potential for data exposure. This mechanism makes information in a data lake less sensitive, promoting data democratization and enabling more data scientists to use the information without compromising privacy.
+* **Avoiding customers' information leakage through support center systems**, letting representatives view information only after the customer approves access.
+* **Building systems with privacy by design**, integrating built-in features such as data protection, data retention policies, privacy rights, and more.
+* **Implementing privacy controls as code**, using the built-in advanced security and privacy policy manager. For example, permitting access only if the purpose matches the customer's consent preferences.
+
+### Next steps
+
+* Explore more about [data privacy](data-privacy) and [data security](data-security) features.
+* Learn about the [architecture](architecture) of Piiano Vault. 
+* Follow the [step-by-step guide](/guides/get-started) to get started with Piiano Vault.

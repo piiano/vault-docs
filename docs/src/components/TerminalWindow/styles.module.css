@@ -1,0 +1,42 @@
+.terminalWindow {
+  background-color: var(--site-color-terminal-background);
+  border-radius: var(--ifm-global-radius);
+  border: 1px solid var(--site-color-terminal-border);
+  box-shadow: 0 0 1rem rgb(0 0 0 / 10%);
+  padding: 0.25rem;
+
+  /*Hide code block shadows*/
+  --ifm-pre-padding: 0.3rem;
+  --ifm-global-shadow-lw: none;
+}
+
+.terminalWindow pre {
+  background-color: var(--site-color-terminal-background);
+  box-shadow: none;
+  font-size: 0.75rem;
+}
+
+.terminalWindowHeader {
+  background: var(--site-color-terminal-background);
+  display: flex;
+  padding: 0 0.5rem 0.2rem;
+}
+
+.dot {
+  margin-right: 0.35rem;
+  margin-top: 0.35rem;
+  height: 0.5rem;
+  width: 0.5rem;
+  background-color: #bbb;
+  border-radius: 50%;
+  display: inline-block;
+}
+
+.terminalWindowBody {
+  background-color: var(--site-color-terminal-background);
+  padding: 0 0.3rem 0.3rem 0.3rem;
+}
+
+.terminalWindowBody *:last-child {
+  margin-bottom: 0;
+}

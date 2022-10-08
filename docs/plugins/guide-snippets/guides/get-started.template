@@ -1,0 +1,169 @@
+#!/bin/bash
+set -euo pipefail
+IFS=$'\n\t'
+
+# Allow alias expansions on non-interactive session.
+shopt -s expand_aliases
+
+#command:dockerRunVault
+docker run --rm \
+  --name pvault-dev \
+  -p 8123:8123 \
+  -e PVAULT_DEVMODE=true \
+  -e PVAULT_SERVICE_LICENSE=${{ licenseToken }} \
+  -d \
+  ${{ runTestArgs }}${{ registry }}/pvault-dev:${{ dockerTag }}
+
+#output:dockerRunVault
+#c3c4a111bd9124e246f289fa276331ab19645cf3982147647b5437a5bfc393cc
+
+sleep 3
+
+#command:createCLIPvaultAlias
+alias pvault="docker run --rm -i -v $(pwd):/pwd -w /pwd ${{ registry }}/pvault-cli:${{ dockerTag }}"
+
+#command:createCLIPvaultAliasForLinux
+alias pvault="docker run --rm --net=host ${{ registry }}/pvault-cli:${{ dockerTag }} --addr http://localhost:8123"
+
+# test with local build of the CLI (in CI it's an empty string and we test the built docker)
+${{ cliTestLocalAlias }}
+
+#ignore
+sleep 2
+
+#command:pvaultStatus
+pvault status
+
+#output:pvaultStatus
+#+------+---------+
+#| DATA | CONTROL |
+#+------+---------+
+#| pass | pass    |
+#+------+---------+
+
+#command:pvaultAddCollection
+pvault collection add --collection-pvschema "
+customers PERSONS (
+  ssn SSN UNIQUE ENCRYPTED COMMENT 'Social security number',
+  email EMAIL,
+  phone_number PHONE_NUMBER NULL,
+  zip_code_us ZIP_CODE_US NULL,
+)"
+
+#output:pvaultAddCollection
+#customers PERSONS (
+# email EMAIL,
+# phone_number PHONE_NUMBER NULL,
+# ssn SSN UNIQUE ENCRYPTED COMMENT 'Social security number',
+# zip_code_us ZIP_CODE_US NULL
+#);
+
+#command:pvaultAddObject
+pvault object add --fields '{ "ssn":"123-12-1234", "email":"john@somemail.com", "phone_number":"+1-121212123", "zip_code_us":"12345" }' --collection customers
+
+#output:pvaultAddObject
+#+--------------------------------------+
+#|                 _id                  |
+#+--------------------------------------+
+#| b2ce6582-8ce0-4504-8008-886eeaaec978 |
+#+--------------------------------------+
+
+#command:pvaultAddMoreObjects
+pvault object add --fields '{ "ssn":"123-12-1235", "email":"mary@somemail.com", "phone_number":"+1-121212124", "zip_code_us":"12345" }' --collection customers
+pvault object add --fields '{ "ssn":"123-12-1236", "email":"eric@somemail.com", "phone_number":"+1-121212125", "zip_code_us":"12345" }' --collection customers
+
+#output:pvaultAddMoreObjects
+#+--------------------------------------+
+#|                 _id                  |
+#+--------------------------------------+
+#| aefd3c81-54a8-4a10-80a6-cb581d741b31 |
+#+--------------------------------------+
+#+--------------------------------------+
+#|                 _id                  |
+#+--------------------------------------+
+#| 5e49fd06-4e6f-448a-8b76-7d20acf0010d |
+#+--------------------------------------+
+
+#command:saveFirstPersonID
+ID=$(pvault object query --match email=john@somemail.com --collection customers --props _id --json | docker exec -i pvault-dev jq -r '.results[0]._id')
+
+#command:pvaultCreateToken
+pvault token create --object-id $ID --props email --collection customers --tag token_tag --type pointer
+
+#output:pvaultCreateToken
+#+--------------------------------------+
+#|               token_id               |
+#+--------------------------------------+
+#| 7520e2f5-2eaf-4678-9c16-98f7ec5fd223 |
+#+--------------------------------------+
+
+#command:saveTokenID
+TOKEN=$(pvault token info --collection customers --object-id $ID --json | docker exec -i pvault-dev jq -r '.[0].token_id')
+
+#command:pvaultDetokenizeToken
+pvault token detokenize --token-id $TOKEN --collection customers
+
+#output:pvaultDetokenizeToken
+#+--------------------------------------+-------------------+
+#|               token_id               |       email       |
+#+--------------------------------------+-------------------+
+#| 7520e2f5-2eaf-4678-9c16-98f7ec5fd223 | john@somemail.com |
+#+--------------------------------------+-------------------+
+
+#command:pvaultListObjects
+pvault object list --all-unsafe --collection customers --page-size 1
+
+#output:pvaultListObjects
+#Displaying 1 result.
+#There are 2 remaining objects.
+#Use --cursor=AY0eCzxDCmna4PtAB7iQK0o7DAgYeAQhAWq2nR466PfQ5wvqve449pZ9huGJUkfRvfq5aQ== to show more.
+#+--------------------------------------+-------------------+--------------+-------------+-------------+
+#|                 _id                  |       email       | phone_number |     ssn     | zip_code_us |
+#+--------------------------------------+-------------------+--------------+-------------+-------------+
+#| b2ce6582-8ce0-4504-8008-886eeaaec978 | john@somemail.com | +1-121212123 | 123-12-1234 |       12345 |
+#+--------------------------------------+-------------------+--------------+-------------+-------------+
+
+#command:pvaultGetObjectSSNByID
+pvault object get --id $ID --props ssn --collection customers
+
+#output:pvaultGetObjectSSNByID
+#Displaying 1 result.
+#+-------------+
+#|     ssn     |
+#+-------------+
+#| 123-12-1234 |
+#+-------------+
+
+#command:pvaultGetAllObjectPropertiesByID
+pvault object get --id $ID --all-unsafe --collection customers
+
+#output:pvaultGetAllObjectPropertiesByID
+#Displaying 1 result.
+#+--------------------------------------+-------------------+--------------+-------------+-------------+
+#|                 _id                  |       email       | phone_number |     ssn     | zip_code_us |
+#+--------------------------------------+-------------------+--------------+-------------+-------------+
+#| b2ce6582-8ce0-4504-8008-886eeaaec978 | john@somemail.com | +1-121212123 | 123-12-1234 |       12345 |
+#+--------------------------------------+-------------------+--------------+-------------+-------------+
+
+#command:pvaultGetMaskedObjectProperties
+pvault object get --id $ID --props ssn.mask,email.mask,phone_number.mask --collection customers
+
+#output:pvaultGetMaskedObjectProperties
+#Displaying 1 result.
+#+-------------------+-------------------+-------------+
+#|    email.mask     | phone_number.mask |  ssn.mask   |
+#+-------------------+-------------------+-------------+
+#| j***@somemail.com | ********2123      | ***-**-1234 |
+#+-------------------+-------------------+-------------+
+
+#command:pvaultDeleteToken
+pvault token delete --collection customers --token-id $TOKEN
+
+#output:pvaultDeleteToken
+#Command completed successfully
+
+#command:pvaultDeleteObject
+pvault object delete --id $ID --collection customers
+
+#output:pvaultDeleteObject
+#Command completed successfully

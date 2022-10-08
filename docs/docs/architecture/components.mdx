@@ -1,0 +1,99 @@
+---
+sidebar_position: 2
+---
+import ThemedImage from '@theme/ThemedImage';
+import useBaseUrl from '@docusaurus/useBaseUrl';
+import Zoom from '@site/src/components/Zoom';
+
+# Components
+
+Vault comprises two main components:
+1. **Control**: A REST HTTP server to manage the Vault schema, transformations, and other configurations.
+2. **Data**: A REST HTTP server to interact with the data, for example storing a person, accessing a person, running queries, tokenizing data, etc.
+
+Each component can run independently in a container.
+
+This split of control and data is for scalability and security reasons.
+
+From the scalability perspective, while control operations are rarely used, and mostly during system upgrades, data operations are used frequently in normal operation. Therefore, running multiple data containers in parallel may be required to scale the system, while this pattern is not anticipated for the control. Splitting data and control enables several containers of data to run with one or two containers for control (for high availability).
+
+From the security perspective, it is possible to grant unauthorized access to data using the control operations; therefore, it is critical to limit who can access the control channel. The split between control and data greatly reduces the attack surface on the control channel. This design also supports adding a network security layer to lock access to control operations to specific network hosts or segments.
+
+The backend store for Vault is a database (implemented with Postgres 13.5+). Both Data and Control connect to it and use it for persistence.
+
+### Secrets handling
+
+Piiano Vault uses several secrets to control access. 
+
+- **Encryption keys** These keys are saved in a key management service (KMS) using:
+  - in the local implementation, a local implementation of the KMS, which is by its nature insecure.
+  - in the cloud, [Amazon Web services (AWS)](https://docs.aws.amazon.com/kms/latest/developerguide/overview.html) or [Google Cloud Platform (GCP)](https://cloud.google.com/kms/docs) KMS. These KMSs encrypt the encryption keys, decrypting the keys at load time. This process means that the encryption keys are only plain text in memory.
+- **API tokens** The database stores these tokens as hashed values using a random salt.
+- **Database credentials** Depending on the deployment type, database credentials are injected into the container from a secrets manager or saved in the configuration file. However, in both cases, the automatic installer and instructions limit database access to the containers running Vault. Therefore, the password alone is not sufficient to access the database. 
+
+### Containers architecture layout
+
+<div className="row">
+
+<div className="col col--6">
+
+#### Server
+
+The Server edition runs Data and Control in the same container and connects to an external database. You can run multiple instances of Server connecting to the same database. It is the default option for production environments with its simplified deployment model. It is also well suited for serverless environments.
+
+</div> {/* /col */}
+
+<div className="col col--6">
+
+#### ServerX
+
+The ServerX edition runs Data and Control in separate containers. You can run multiple instances of ServerX connecting to the same database. It is intended for maximum scalability and when network segregation of the control network is required.
+
+
+</div> {/* /col */}
+</div> {/* /row */}
+
+<div className="row">
+<div className="col col--6">
+<Zoom>
+<ThemedImage sources={{
+  light: useBaseUrl('/img/pvault-server-diagram-light.svg'),
+  dark: useBaseUrl('/img/pvault-server-diagram-dark.svg'),
+}} alt="The architecture of the Vault Dev edition"/>
+</Zoom>
+
+</div> {/* /col */}
+<div className="col col--6">
+<Zoom>
+<ThemedImage sources={{
+light: useBaseUrl('/img/pvault-serverx-diagram-light.svg'),
+dark: useBaseUrl('/img/pvault-serverx-diagram-dark.svg'),
+}} alt="The architecture of the Vault ServerX edition"/>
+</Zoom>
+</div> {/* /col */}
+
+</div> {/* /row */}
+
+<div className="row">
+
+<div className="col col--6">
+
+#### Dev
+
+The Dev edition is designed to provide a convenient development experience. It is intended for quick experiments and tests. Run it locally on your machine, and not in production. Technically, it runs Data and Control in a single container that is also packaged with an embedded database. 
+Every dev container is independent. You can not share data between multiple dev containers.
+
+
+<Zoom>
+<ThemedImage sources={{
+  light: useBaseUrl('/img/pvault-dev-diagram-light.svg'),
+  dark: useBaseUrl('/img/pvault-dev-diagram-dark.svg'),
+}} alt="The architecture of the Vault Dev edition"/>
+</Zoom>
+
+</div> {/* /col */}
+</div> {/* /row */}
+
+### Next steps
+
+* Learn more about the [different Vault editions](editions).

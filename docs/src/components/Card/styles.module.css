@@ -1,0 +1,47 @@
+.cardContainer {
+  --ifm-link-color: var(--ifm-color-emphasis-900);
+  --ifm-link-hover-color: var(--ifm-color-emphasis-900);
+  --ifm-link-hover-decoration: none;
+  border: 1px solid var(--site-color-card-border);
+  transition: all var(--ifm-transition-fast) ease;
+  transition-property: border, box-shadow;
+  height: 100%;
+  box-shadow: 0 0 1rem rgb(0 0 0 / 10%);
+  padding: var(--ifm-pre-padding);
+}
+
+.cardContainer:hover {
+  border-color: var(--ifm-color-primary);
+}
+
+.cardIcon {
+  font-size: var(--ifm-h1-font-size);
+}
+
+.cardIcon img {
+  max-height: var(--ifm-h1-font-size);
+}
+
+.cardTitle {
+  --ifm-link-color: var(--ifm-color-emphasis-900);
+  font-size: 1.1rem;
+  margin: 0;
+}
+
+.cardLink {
+  color:  var(--ifm-color-primary);
+}
+
+.cardContainer .arrowIcon {
+  margin-left: 0.25rem;
+  -webkit-transition: -webkit-transform 200ms;
+  -webkit-transition: transform 200ms;
+  transition: transform 200ms;
+  
+}
+
+.cardContainer:hover .arrowIcon {
+  -webkit-transform: translateX(4px);
+  -ms-transform: translateX(4px);
+  transform: translateX(4px);
+}

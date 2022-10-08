@@ -1,0 +1,6 @@
+.elementsBox .TryItPanel .SendButtonHolder > div {
+  display: none;
+}
+.elementsBox .TryItPanel .SendButtonHolder:before {
+  content: 'Navigate to the docs of your local Vault installation to try the API directly from there.';
+}

@@ -1,0 +1,34 @@
+.instruqtWindow {
+  border-radius: var(--ifm-global-radius);
+  box-shadow: 0 0 1rem rgb(0 0 0 / 10%);
+
+  /*Hide code block shadows*/
+  --ifm-pre-padding: 0.3rem;
+  --ifm-global-shadow-lw: none;
+}
+
+.instruqtWindowHeader {
+  background: var(--site-color-instruqt-background);
+  display: flex;
+  padding: 0;
+}
+
+.instruqtWindowBody {
+  position: relative;
+  overflow: hidden;
+  padding-top: 56.25%;
+}
+
+.instruqtWindowBody *:last-child {
+  margin-bottom: 0;
+}
+
+.instruqtFrame {
+  border-width: 0;
+  border-radius: 0.5rem;
+  position: absolute;
+  top: 0;
+  left: 0;
+  width: 100%;
+  height: 100%;
+}

@@ -1,0 +1,22 @@
+.changelogList {
+  font-size: 90%;
+  padding-top: var(--ifm-pre-padding);
+}
+
+.changelogItem {
+  display: grid;
+  gap: 0.5rem;
+  grid-template-columns: 120px 1fr;
+  margin-bottom: 0.5rem;
+  border-bottom: 1px solid var(--ifm-toc-border-color);
+  padding: 0 0 calc(0.5 * var(--ifm-pre-padding)) 0;
+}
+
+.changelogItemDate {
+  color: var(--ifm-color-emphasis-700);
+  text-transform: uppercase;
+}
+
+.changelogItemTitle {
+  font-weight: 500;
+}

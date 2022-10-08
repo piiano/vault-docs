@@ -1,0 +1,57 @@
+---
+sidebar_position: 1
+sidebar_label: Overview
+slug: /
+---
+
+# CLI overview
+
+## Learn about using the Piiano CLI to work with Piiano in the command line.
+
+The Piiano Vault CLI enables you to perform key actions from the command prompt.
+
+By default, the CLI command returns a tabulated text format. For example:
+
+```bash
+pvault --addr=http://localhost:8123 status
+
++------+---------+
+| DATA | CONTROL |
++------+---------+
+| pass | pass    |
++------+---------+
+```
+
+To return the content in JSON format, use `--json` or `-j`. By default, the JSON is returned prettified; use the `--compact` / `-c` flag to get a compact version of the JSON.
+
+### docker exec
+
+Vault containers include the CLI `pvault` that is configured to interact with the Vault server.
+
+If Vault is run with Docker, this command can be used to interact with `pvault`:
+
+```bash
+docker exec -it pvault-dev pvault status
+
++------+---------+
+| DATA | CONTROL |
++------+---------+
+| pass | pass    |
++------+---------+
+```
+
+When working with different editions, change the `pvault-dev` container name in the command above to the edition you are wokring with: `pvault-server`, `pvault-data` or `pvault-control`.
+
+When running Vault with docker-compose, this command is used to interact with `pvault`:
+
+```bash
+$ docker-compose exec piiano-vault-server pvault status
+
++------+---------+
+| DATA | CONTROL |
++------+---------+
+| pass | pass    |
++------+---------+
+```
+
+To interact with the data and control containers, change `piiano-vault-server` to `piiano-vault-data` and `piiano-vault-control` respectively.
