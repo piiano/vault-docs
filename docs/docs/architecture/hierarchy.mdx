@@ -1,0 +1,55 @@
+---
+sidebar_position: 1
+---
+import ThemedImage from '@theme/ThemedImage';
+import useBaseUrl from '@docusaurus/useBaseUrl';
+import Zoom from '@site/src/components/Zoom';
+
+# Hierarchy
+
+Piiano Vault is implemented by the Vault Server. Within Vault Server, data is stored and organized in vaults. A vault then contains collections of objects of sensitive data that share a common data schema. This page describes these architectural components.
+
+<div className="row">
+  <div className="col col--8 col--offset-2">
+    <div className="col-demo padding-top--md">
+      <Zoom>
+        <ThemedImage className="small" sources={{
+          light: useBaseUrl('/img/vault-hierarchy-light.svg'),
+          dark: useBaseUrl('/img/vault-hierarchy-dark.svg'),
+        }} alt="The Vault hierarchy"/>
+      </Zoom>
+    </div>
+  </div>
+</div>
+
+### Vault Server
+
+Vault Server is the software that implements Piiano Vault. You can deploy one or many Vault Servers. For example, you can use multiple Vault Servers when managing personal data by geographical region.
+
+Vault Server is a multi-tenant system where each vault can be assigned to a client.
+
+Several [editions](editions) of Vault Server are available to cover use cases such as development and testing and high throughput production sites.
+
+### Vaults
+
+A vault is a logical and isolated container for personal information. Optionally, it can be assigned to a tenant.
+
+:::info
+Vault supports one vault within the server. The [Vault roadmap](/roadmap) includes the ability to create many vaults in a Vault Server. 
+:::
+
+For example, you may run separate e-commerce and loan applications. Different privacy statements and legal agreements govern each application, and they have separate sets of customers, partners, and personal information. In this case, each application can use a different vault as a separate tenant.
+
+### Collections
+
+A collection is a container for objects holding personal data that conforms to a common data [schema](/guides/manage-collections-and-schemas/about-collections). Collections are defined from a list of schema prototypes for persons, payment information, or any other sensitive data.
+
+:::info
+Vault supports the `PERSONS` schema prototype for personally identifiable information. The [Vault roadmap](/roadmap) includes support for other schema prototypes.
+:::
+
+For example, you can create two collections for your e-commerce application, one to store personal information about partners and another to store personal information about your partners' customers.
+
+### Objects
+
+An object holds values specified by the [properties](/guides/manage-collections-and-schemas/reference/schema-properties) in the collection's schema. Each property is defined with a [semantic personal data type](/guides/manage-collections-and-schemas/about-collections) that provides a validator and can support [transformations](/data-security/transformations) that desensitized personal information with masks.

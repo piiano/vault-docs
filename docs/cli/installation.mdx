@@ -1,0 +1,31 @@
+---
+sidebar_position: 1.1
+sidebar_label: Installation
+---
+
+import { useDockerTag } from '@site/src/components/docker-tag';
+import CodeBlock from '@theme/CodeBlock';
+
+# Install Piiano CLI
+
+### Docker image
+
+Where your Vault containers are in-accessible for `exec`-ing, use the containerized image of the CLI hosted at `piiano/pvault-cli`. 
+
+First, pull the image:
+
+<CodeBlock language="bash">
+{`docker pull piiano/pvault-cli:${useDockerTag()}`}
+</CodeBlock>
+
+Then use this command:
+
+<CodeBlock language="bash">
+{`docker run -it piiano/pvault-cli:${useDockerTag()} status`}
+
++------+---------+
+| DATA | CONTROL |
++------+---------+
+| pass | pass    |
++------+---------+
+</CodeBlock>

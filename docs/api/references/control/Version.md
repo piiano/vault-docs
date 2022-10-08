@@ -1,0 +1,1 @@
+Gets the version of Vault.

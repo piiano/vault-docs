@@ -1,0 +1,10 @@
+
+.highlight{
+    z-index: 101;
+    position: relative;
+    background: var(--ifm-background-color);
+    border-radius: .5rem;
+    padding: .5rem 1rem;
+    margin: -.5rem -1rem;
+    box-shadow: 0 0 .55rem rgb(255, 162, 0), 0 0 .75rem rgb(255, 251, 145, .5);
+}

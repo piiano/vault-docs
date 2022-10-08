@@ -1,0 +1,81 @@
+---
+sidebar_position: 1
+sidebar_label: Pre-built docker containers
+---
+
+import {useOrigin} from '@site/src/components/origin';
+import GuideSnippet from '@site/src/components/GuideSnippet';
+import {RegisterInstruction, useLicense, HighlightAfterLogin} from '@site/src/components/registration';
+
+# Install self-hosted Piiano Vault server from a pre-built Docker container
+
+## Learn how to install a self-hosted Piiano Vault editions, from a pre-built, publicly available Docker images.
+
+### Prerequisites
+
+1. <HighlightAfterLogin><RegisterInstruction /></HighlightAfterLogin>
+
+### Dev
+
+Dev edition is a standalone, single-container Vault package. Its main purpose is to enable you to experiment, test, and develop. It is not intended for use in production. See [Dev edition](/architecture/editions#dev) for more details.
+
+#### Run with Docker
+
+To start the Dev edition, use this command:
+
+<GuideSnippet guide="pre-built-docker-containers" command="dockerRunVaultDev" variables={{ licenseToken: useLicense()?.token ?? "{LICENSE_KEY}" }} />
+
+### Server
+
+Server edition is a single container Vault package, to be used with an external database. See [Server edition](/architecture/editions#server) for more details.
+
+To run the Server edition, use one of these options.
+
+#### Run with Docker
+
+Server edition needs a Postgres server running. You start a Postgres container with this command:
+
+<GuideSnippet guide="pre-built-docker-containers" command="dockerRunPostgres" />
+
+To start Vault, use this command:
+
+<GuideSnippet guide="pre-built-docker-containers" command="dockerRunVaultServer" variables={{ licenseToken: useLicense()?.token ?? "{LICENSE_KEY}" }} />
+
+Vault's settings are changed using environment variables. These variables include the database connection settings such as user and password. Make sure that the connection settings match those of the database. See the [configuration](../configure/custom-configuration-file) page for more information.
+
+You can also use a `pvault.toml` file to configure Vault. To do that, mount the directory containing the custom `toml` file to the container's path `/etc/pvault`. For example: `-v $(pwd):/etc/pvault`.
+
+#### Run with Docker Compose
+
+Download `docker-compose.yaml` and configuration files, and run `docker-compose up`:
+
+<GuideSnippet guide="pre-built-docker-containers" command="dockerRunServerCompose" variables={{ originWithBase: useOrigin('/') }}/>
+
+Use the `.env` file to configure Vault. See the [configuration](../configure/environment-variables#docker-compose-configurations) page for more information.
+
+To change the default configuration or run in a different directory, download and extract [pvault_server.tar.gz](@site/static/assets/pvault_server.tar.gz) to obtain the  `docker-compose.yaml` and `.env` configuration files.
+
+Note: to successfully run Vault, you will need to provide the license in the `PVAULT_SERVICE_LICENSE` environment variable.
+
+### ServerX
+
+ServerX edition is a multi-container Vault package. It is designed for implementations where maximum scalability with network segregation is required. See [ServerX edition](/architecture/editions#serverx) for more details.
+
+To run the ServerX edition, use one of these options.
+
+#### Run with Docker Compose
+
+Download `docker-compose.yaml` and configuration files, and run `docker-compose up`:
+
+<GuideSnippet guide="pre-built-docker-containers" command="dockerRunMiniCompose" variables={{ originWithBase: useOrigin('/') }}/>
+
+Vault is configured using the `.env` file. See the [configuration](../configure/environment-variables.md#docker-compose-configurations) page for more information.
+
+To change the default configuration or run in a different directory, download and extract [pvault_serverx.tar.gz](@site/static/assets/pvault_serverx.tar.gz) to obtain the `docker-compose.yaml` and `.env` configuration files.
+
+Note: to successfully run Vault, you need to provide the license in the `PVAULT_SERVICE_LICENSE` environment variable.
+
+### Next steps
+
+* Now that you have your Piiano Vault server up and running, you can  Follow our [step-by-step guide](/guides/get-started), and find out what you can do with it.
+* You can always [contact us](https://piiano.com/contact-us/) if you need help working something out, or if you want to have a chat.

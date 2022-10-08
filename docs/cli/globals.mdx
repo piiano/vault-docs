@@ -1,0 +1,47 @@
+---
+sidebar_position: 1.3
+sidebar_label: Global flags
+---
+import CodeBlock from "@theme/CodeBlock";
+import {useDockerTag} from "../src/components/docker-tag";
+
+# Global flags
+
+The Piiano CLI includes several global flags, some of which can be set using environment variables.
+
+### Global flags list
+
+These are the global flags available in the Piiano CLI:
+
+| Flag                   | Description                                                   | Values                                                                                                                                                                                                                              | Default value |
+| ---------------------- | ------------------------------------------------------------- |-------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------| ------------- |
+| `--addr`               | The URL of the Piiano Vault implementation.                   |                                                                                                                                                                                                                                     | `http://localhost:8123` |
+| `--json`<br />`-j`     | Return the output in JSON format.                             |                                                                                                                                                                                                                                     | |
+| `--insecure`<br />`-k` | Skip the TLS certificate verification.                        |                                                                                                                                                                                                                                     | |
+| `--reason`             | A code indicating the reason for accessing Piiano Vault.      | `AppFunctionality`<br />`Analytics`<br />`Notifications`<br />`ThirdPartyMarketing`<br />`Marketing`<br />`FraudPreventionSecurityAndCompliance`<br />`AccountManagement`<br />`Maintenance`<br />`DataSubjectRequest`<br />`Other` | `Maintenance` |
+| `--collection`         | The collection name the operation applies to.                 |                                                                                                                                                                                                                                     |  |
+| `--authtoken`          | The authorization token passed in the header of each request. |                                                                                                                                                                                                                                     | `pvaultauth` |
+| `--log-level`          | The log level.                                                |                                                                                                                                                                                                                                     |  `info` |
+ 
+### Environment variable support
+
+These flags can also be set with an environment variable:
+
+| Flag           | Environment variable   |
+|:---------------|------------------------|
+| `--addr`       | `PVAULT_ADDR`          | 
+| `--reason`     | `PVAULT_ACCESS_REASON` |
+| `--collection` | `PVAULT_COLLECTION`    |
+| `--authtoken`  | `PVAULT_AUTH_TOKEN`    |
+| `--log-level`  | `PVAULT_LOG_LEVEL`     |
+
+
+The environment variables can be set in the CLI's Docker container when providing an alias like this:
+
+<CodeBlock language='bash'>
+  {`alias pvault='docker run --env PVAULT_ADDR=http://localhost:8123 --rm piiano/pvault-cli:${useDockerTag()}'`}
+</CodeBlock>
+
+:::note
+CLI flags have precedence over environment variables.
+:::

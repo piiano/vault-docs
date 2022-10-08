@@ -1,0 +1,295 @@
+/**
+ * Any CSS included here will be global. The classic template
+ * bundles Infima by default. Infima is a CSS framework designed to
+ * work well for content-centric websites.
+ */
+
+/* You can override the default Infima variables here. */
+:root {
+  --ifm-color-primary: #4c32ab;
+  --ifm-color-primary-dark: #442d9a;
+  --ifm-color-primary-darker: #412a91;
+  --ifm-color-primary-darkest: #0A0047;
+  --ifm-color-primary-light: #5437bc;
+  --ifm-color-primary-lighter: #5739c5;
+  --ifm-color-primary-lightest: #6d53cd;
+  --ifm-code-font-size: 95%;
+
+  --ifm-background-color: #fff;
+  --ifm-navbar-background-color: #fff;
+  --ifm-navbar-shadow: none;
+
+  --ifm-heading-margin-bottom: 0.75rem;
+
+  /*HR*/
+  --ifm-hr-background-color: var(--ifm-toc-border-color);
+  --ifm-hr-margin-vertical: 2.5rem;
+
+  /*Text colors*/
+  --color-text: #333333;
+  --ifm-heading-color: #0A0047;
+
+  /*Site*/
+  --site-color-terminal-border: var(--ifm-color-emphasis-200);
+  --site-color-terminal-background: var(--ifm-color-emphasis-100);
+  --site-color-section-background: var(--ifm-color-emphasis-100);
+
+  /*Menu*/
+  --ifm-menu-link-padding-horizontal: 0.8rem;
+
+  /*TOC*/
+  --ifm-toc-link-color: var(--ifm-color-emphasis-700);
+  --ifm-toc-heading-color: var(--ifm-heading-color);
+
+  /*Card*/
+  --site-color-card-border: var(--ifm-color-emphasis-200);
+
+  /*Pagination*/
+  --ifm-link-hover-color: var(--ifm-color-primary-dark);
+
+  /*Dropdown*/
+  --ifm-dropdown-background-color: var(--ifm-background-color);
+  --site-color-dropdown-border: var(--ifm-color-emphasis-200);
+  
+  /* Global */
+  --ifm-global-shadow-md: 0 0 1rem rgb(0 0 0 / 10%);
+  --doc-sidebar-width: 350px !important;
+}
+
+html[data-theme='dark'] {
+  --ifm-color-primary: #8569ff;
+  --ifm-color-primary-dark: #9679ff;
+  --ifm-color-primary-darker: #8664ff;
+  --ifm-color-primary-darkest: #5526ff;
+  --ifm-color-primary-light: #d8cdff;
+  --ifm-color-primary-lighter: #e8e2ff;
+  --ifm-color-primary-lightest: #ffffff;
+
+  --ifm-toc-border-color: #ffffff1f;
+  --ifm-background-color: #0d071e;
+
+  /*Text colors*/
+  --ifm-heading-color: var(--ifm-color-white);
+  --ifm-navbar-background-color: #0d071e;
+  --ifm-footer-background-color: #0d071e;
+
+  /*Card*/
+  --ifm-card-background-color: #19142a;
+  --site-color-card-border: #ffffff1f;
+
+  /*Site*/
+  --site-color-terminal-border: #ffffff1f;
+  --site-color-terminal-background: #19142a;
+  --site-color-section-background: #19142a;
+
+  /*TOC*/
+  --ifm-toc-link-color: var(--ifm-color-emphasis-500);
+  --ifm-toc-heading-color: var(--ifm-heading-color);
+
+  /*Card*/
+  --site-color-dropdown-border: #ffffff1f;
+
+  /* Global */
+  --ifm-global-shadow-md: 0 0 1rem rgb(255 255 255 / 10%);
+}
+
+.alert--secondary {
+  --ifm-alert-background-color: var(--site-color-terminal-background);
+  --ifm-alert-border-color: var(--site-color-terminal-border);
+}
+
+pre {
+  background-color: var(--ifm-card-background-color);
+}
+
+/* By default wrap long lines for all code blocks except from those with a `table` language */
+pre.prism-code:not(.language-table),
+pre div.prism-code:not(.language-table) {
+  white-space: pre-wrap;
+}
+
+/* explicitly prevent wrapping of long lines for a code block */
+.no-wrap-long-lines pre.prism-code,
+.no-wrap-long-lines pre div.prism-code {
+  white-space: pre;
+}
+
+.dropdown__menu {
+  border: 1px solid var(--site-color-dropdown-border);
+}
+
+.menu__list-item.divider {
+  margin-top: calc( var(--ifm-menu-link-padding-vertical) * 2 );
+  padding-top: calc( var(--ifm-menu-link-padding-vertical) * 2 );
+  border-top: 1px solid var(--ifm-toc-border-color);
+}
+
+.navbar__brand {
+  margin-right: 0rem;
+}
+
+/*Markdown*/
+.markdown h1:first-child {
+  margin-bottom: var(--ifm-heading-margin-bottom);
+}
+
+.markdown h1.hero__title {
+  margin-bottom: var(--ifm-heading-margin-bottom);
+}
+
+.markdown h1:first-child + h2, .hero__subtitle {
+  margin-top: 0;
+  margin-bottom: calc( var(--ifm-heading-margin-bottom) * 3 );
+  font-weight: var(--ifm-font-weight-semibold);
+  color: var(--color-text-muted);
+  font-size: 1.5rem;
+}
+
+/*Pagination*/
+.pagination-nav__link {
+  border: none;
+  padding: 0;
+}
+
+.pagination-nav__sublabel {
+  margin-block-end: 0.75rem;
+}
+
+.pagination-nav__link--next .pagination-nav__label::after {
+  content: ' →' !important;
+}
+
+.pagination-nav__link--prev .pagination-nav__label::before {
+  content: '← ' !important;
+}
+
+ul>li::marker {
+  color: var(--ifm-color-emphasis-400);
+}
+
+section.reference ul {
+  list-style: none;
+  padding: 0;
+}
+
+section.reference ul li a {
+}
+
+.navbar {
+  border-bottom: 1px solid var(--ifm-toc-border-color);
+}
+
+.header-github-link:hover, .header-discord-link:hover {
+  opacity: 0.7;
+}
+
+.header-github-link::before, .header-discord-link::before {
+  content: '';
+  width: 24px;
+  height: 24px;
+  display: flex;
+}
+
+.header-github-link::before {
+  background: url("data:image/svg+xml,%3Csvg viewBox='0 0 24 24' xmlns='http://www.w3.org/2000/svg'%3E%3Cpath fill='currentColor' d='M12 .297c-6.63 0-12 5.373-12 12 0 5.303 3.438 9.8 8.205 11.385.6.113.82-.258.82-.577 0-.285-.01-1.04-.015-2.04-3.338.724-4.042-1.61-4.042-1.61C4.422 18.07 3.633 17.7 3.633 17.7c-1.087-.744.084-.729.084-.729 1.205.084 1.838 1.236 1.838 1.236 1.07 1.835 2.809 1.305 3.495.998.108-.776.417-1.305.76-1.605-2.665-.3-5.466-1.332-5.466-5.93 0-1.31.465-2.38 1.235-3.22-.135-.303-.54-1.523.105-3.176 0 0 1.005-.322 3.3 1.23.96-.267 1.98-.399 3-.405 1.02.006 2.04.138 3 .405 2.28-1.552 3.285-1.23 3.285-1.23.645 1.653.24 2.873.12 3.176.765.84 1.23 1.91 1.23 3.22 0 4.61-2.805 5.625-5.475 5.92.42.36.81 1.096.81 2.22 0 1.606-.015 2.896-.015 3.286 0 .315.21.69.825.57C20.565 22.092 24 17.592 24 12.297c0-6.627-5.373-12-12-12'/%3E%3C/svg%3E") no-repeat;
+}
+
+[data-theme='dark'] .header-github-link::before {
+  background: url("data:image/svg+xml,%3Csvg viewBox='0 0 24 24' xmlns='http://www.w3.org/2000/svg'%3E%3Cpath fill='white' d='M12 .297c-6.63 0-12 5.373-12 12 0 5.303 3.438 9.8 8.205 11.385.6.113.82-.258.82-.577 0-.285-.01-1.04-.015-2.04-3.338.724-4.042-1.61-4.042-1.61C4.422 18.07 3.633 17.7 3.633 17.7c-1.087-.744.084-.729.084-.729 1.205.084 1.838 1.236 1.838 1.236 1.07 1.835 2.809 1.305 3.495.998.108-.776.417-1.305.76-1.605-2.665-.3-5.466-1.332-5.466-5.93 0-1.31.465-2.38 1.235-3.22-.135-.303-.54-1.523.105-3.176 0 0 1.005-.322 3.3 1.23.96-.267 1.98-.399 3-.405 1.02.006 2.04.138 3 .405 2.28-1.552 3.285-1.23 3.285-1.23.645 1.653.24 2.873.12 3.176.765.84 1.23 1.91 1.23 3.22 0 4.61-2.805 5.625-5.475 5.92.42.36.81 1.096.81 2.22 0 1.606-.015 2.896-.015 3.286 0 .315.21.69.825.57C20.565 22.092 24 17.592 24 12.297c0-6.627-5.373-12-12-12'/%3E%3C/svg%3E")
+  no-repeat;
+}
+
+.header-discord-link::before {
+  background-image: url("data:image/svg+xml;charset=utf-8,%3Csvg xmlns='http://www.w3.org/2000/svg' viewBox='0 0 24 24'%3E%3Cpath fill='currentColor' d='M20.317 4.37a19.791 19.791 0 0 0-4.885-1.515.074.074 0 0 0-.079.037c-.21.375-.444.864-.608 1.25a18.27 18.27 0 0 0-5.487 0 12.64 12.64 0 0 0-.617-1.25.077.077 0 0 0-.079-.037A19.736 19.736 0 0 0 3.677 4.37a.07.07 0 0 0-.032.027C.533 9.046-.32 13.58.099 18.057a.082.082 0 0 0 .031.057 19.9 19.9 0 0 0 5.993 3.03.078.078 0 0 0 .084-.028 14.09 14.09 0 0 0 1.226-1.994.076.076 0 0 0-.041-.106 13.107 13.107 0 0 1-1.872-.892.077.077 0 0 1-.008-.128 10.2 10.2 0 0 0 .372-.292.074.074 0 0 1 .077-.01c3.928 1.793 8.18 1.793 12.062 0a.074.074 0 0 1 .078.01c.12.098.246.198.373.292a.077.077 0 0 1-.006.127 12.299 12.299 0 0 1-1.873.892.077.077 0 0 0-.041.107c.36.698.772 1.362 1.225 1.993a.076.076 0 0 0 .084.028 19.839 19.839 0 0 0 6.002-3.03.077.077 0 0 0 .032-.054c.5-5.177-.838-9.674-3.549-13.66a.061.061 0 0 0-.031-.03zM8.02 15.33c-1.183 0-2.157-1.085-2.157-2.419 0-1.333.956-2.419 2.157-2.419 1.21 0 2.176 1.096 2.157 2.42 0 1.333-.956 2.418-2.157 2.418zm7.975 0c-1.183 0-2.157-1.085-2.157-2.419 0-1.333.955-2.419 2.157-2.419 1.21 0 2.176 1.096 2.157 2.42 0 1.333-.946 2.418-2.157 2.418Z'/%3E%3C/svg%3E");
+}
+
+[data-theme='dark'] .header-discord-link::before {
+  background-image: url("data:image/svg+xml;charset=utf-8,%3Csvg xmlns='http://www.w3.org/2000/svg' viewBox='0 0 24 24'%3E%3Cpath fill='white' d='M20.317 4.37a19.791 19.791 0 0 0-4.885-1.515.074.074 0 0 0-.079.037c-.21.375-.444.864-.608 1.25a18.27 18.27 0 0 0-5.487 0 12.64 12.64 0 0 0-.617-1.25.077.077 0 0 0-.079-.037A19.736 19.736 0 0 0 3.677 4.37a.07.07 0 0 0-.032.027C.533 9.046-.32 13.58.099 18.057a.082.082 0 0 0 .031.057 19.9 19.9 0 0 0 5.993 3.03.078.078 0 0 0 .084-.028 14.09 14.09 0 0 0 1.226-1.994.076.076 0 0 0-.041-.106 13.107 13.107 0 0 1-1.872-.892.077.077 0 0 1-.008-.128 10.2 10.2 0 0 0 .372-.292.074.074 0 0 1 .077-.01c3.928 1.793 8.18 1.793 12.062 0a.074.074 0 0 1 .078.01c.12.098.246.198.373.292a.077.077 0 0 1-.006.127 12.299 12.299 0 0 1-1.873.892.077.077 0 0 0-.041.107c.36.698.772 1.362 1.225 1.993a.076.076 0 0 0 .084.028 19.839 19.839 0 0 0 6.002-3.03.077.077 0 0 0 .032-.054c.5-5.177-.838-9.674-3.549-13.66a.061.061 0 0 0-.031-.03zM8.02 15.33c-1.183 0-2.157-1.085-2.157-2.419 0-1.333.956-2.419 2.157-2.419 1.21 0 2.176 1.096 2.157 2.42 0 1.333-.956 2.418-2.157 2.418zm7.975 0c-1.183 0-2.157-1.085-2.157-2.419 0-1.333.955-2.419 2.157-2.419 1.21 0 2.176 1.096 2.157 2.42 0 1.333-.946 2.418-2.157 2.418Z'/%3E%3C/svg%3E");
+}
+
+footer {
+  font-size: 85%;
+}
+
+footer .footer__link-item:not(:first-child) {
+  margin-left: 1rem;
+}
+
+@media (max-width: 996px) {
+  footer .footer__link-item:not(:first-child) {
+    margin-left: 0;
+  }
+
+  footer .footer__copyright .footer__link-item {
+    display: inline-block;
+  }
+}
+
+.text-muted {
+  color: var(--color-text-muted);
+}
+
+.changelog-container {
+  background: var(--site-color-section-background);
+  border-radius: var(--ifm-global-radius);
+}
+
+.changelog-container *:last-child {
+  margin-bottom: 0;
+}
+
+.roadmap-container {
+  background: var(--site-color-section-background);
+  border-radius: var(--ifm-global-radius);
+}
+
+.roadmap-container *:last-child {
+  margin-bottom: 0;
+}
+
+.docusaurus-highlight-code-line {
+  background-color: rgba(0, 0, 0, 0.1);
+  display: block;
+  margin: 0 calc(-1 * var(--ifm-pre-padding));
+  padding: 0 var(--ifm-pre-padding);
+}
+
+html[data-theme='dark'] .docusaurus-highlight-code-line {
+  background-color: rgba(0, 0, 0, 0.3);
+}
+
+/* add http method badge to docusaurus sidebar */
+.theme-doc-sidebar-item-link.api-endpoint a.menu__link:after {
+  display: block;
+  border-radius: 6px;
+  padding: 2px 4px;
+  font-weight: bold;
+  font-size: 0.75rem;
+  margin-left: auto;
+}
+
+:root {
+  --http-get: var(--color-success);
+  --http-post: var(--color-primary);
+  --http-put: var(--color-warning);
+  --http-patch: var(--color-warning);
+  --http-delete: var(--color-danger);
+  --http-head: var(--color-warning);
+  --http-trace: var(--color-warning);
+  --http-options: var(--color-warning);
+}
+
+/* colors for http method badges in docusaurus sidebar */
+.theme-doc-sidebar-item-link.api-endpoint.http-get a.menu__link:after { content: "GET"; color: var(--http-get); }
+.theme-doc-sidebar-item-link.api-endpoint.http-post a.menu__link:after { content: "POST"; color: var(--http-post); }
+.theme-doc-sidebar-item-link.api-endpoint.http-put a.menu__link:after { content: "PUT"; color: var(--http-put); }
+.theme-doc-sidebar-item-link.api-endpoint.http-patch a.menu__link:after { content: "PATCH"; color: var(--http-patch); }
+.theme-doc-sidebar-item-link.api-endpoint.http-delete a.menu__link:after { content: "DELETE"; color: var(--http-delete); }
+.theme-doc-sidebar-item-link.api-endpoint.http-head a.menu__link:after { content: "HEAD"; color: var(--http-head); }
+.theme-doc-sidebar-item-link.api-endpoint.http-trace a.menu__link:after { content: "TRACE"; color: var(--http-trace); }
+.theme-doc-sidebar-item-link.api-endpoint.http-options a.menu__link:after { content: "OPTIONS";color: var(--http-options); }
+
+
+.transitioned{
+  transition: all ease-out 200ms;
+}

@@ -1,0 +1,105 @@
+
+/*
+ * Customizations of stoplight elements to be more consistent with the docusaurus look and feel.
+ */
+
+/* remove stoplight page padding */
+.elementsBox .sl-px-24, .elementsBox .sl-py-16 {
+    padding: 0 !important;
+}
+/* hide stoplight title in favor of docusaurus title */
+.elementsBox h1 {
+    display: none;
+}
+/* hide stoplight sidebar */
+.elementsBox .sl-elements-api > .sl-flex:first-child {
+    display: none;
+}
+.elementsBox .sl-elements-api > .sl-flex:first-child .ElementsTableOfContentsItem > div:hover {
+    background: var(--ifm-menu-color-background-hover);
+}
+.elementsBox .sl-elements-api > .sl-flex:first-child .ElementsTableOfContentsItem > div.sl-bg-primary-tint {
+    background: var(--ifm-menu-color-background-hover);
+    color: var(--ifm-menu-color-active);
+}
+/* sidebar background */
+.elementsBox .sl-elements-api > .sl-flex:first-child .sl-bg-canvas-100 {
+    background-color: transparent;
+}
+/* fix black text color in inputs on dark background */
+.elementsBox .sl-input input {
+    color: var(--color-text);
+}
+/* fix issue with code blocks in dark mode */
+html[data-theme='dark'] .elementsBox pre.sl-code-viewer:not(.sl-inverted) span[style*='color'] {
+    filter: brightness(3.5) sepia(.3);
+}
+/* fix black text color in inputs on dark background */
+.elementsBox .sl-mb-5 {
+    display: flex;
+}
+/* main api doc section */
+.elementsBox .sl-elements-api > div:nth-child(2) {
+    background-color: transparent;
+}
+/* main api doc section header */
+.elementsBox .sl-elements-api > div:nth-child(2) > div:first-child > div:first-child > div:first-child {
+    align-items: stretch;
+}
+/* omit duplicate list bullets */
+.elementsBox .sl-prose ul:not(.contains-task-list) {
+    list-style-type: none;
+    padding-inline-start: .75rem;
+}
+
+/* responses box flex wrap on mobile */
+.elementsBox div.sl-stack.sl-flex.sl-flex-col.sl-w-full > div.sl-stack.sl-stack--horizontal.sl-stack--6.sl-flex.sl-flex-row.sl-items-center {
+    flex-wrap: wrap;
+}
+
+/* responses box add margin to right of title instead of left of response codes for when response codes are wrapped */
+.elementsBox #Responses {
+    margin-right: 1rem;
+}
+
+/* responses codes box wrap for when there are many response codes in mobile, use gap instead of margin for better alignment when wrapped */
+.elementsBox div.sl-stack.sl-flex.sl-flex-col.sl-w-full > div.sl-stack.sl-stack--horizontal.sl-stack--6.sl-flex.sl-flex-row.sl-items-center > div:last-child {
+    flex-wrap: wrap;
+    margin: 0;
+    gap: .4rem;
+}
+
+/* disable margin for better alignment when wrapped (we use gap on parent) */
+.elementsBox div.sl-stack.sl-flex.sl-flex-col.sl-w-full > div.sl-stack.sl-stack--horizontal.sl-stack--6.sl-flex.sl-flex-row.sl-items-center > div:last-child > div {
+    margin: 0;
+}
+
+@media only screen and (max-width: 996px) {
+    /* change layout in mobile */
+    .elementsBox div.sl-stack.sl-flex.sl-flex-col.sl-w-full > div:last-child {
+        flex-direction: column;
+    }
+    /* make the main docs box full width in mobile */
+    .elementsBox div.sl-stack.sl-flex.sl-flex-col.sl-w-full > div:last-child > div:first-child {
+        width: 100%;
+        margin-bottom: 2rem;
+    }
+    /* make the try-it box full width in mobile */
+    .elementsBox div.sl-stack.sl-flex.sl-flex-col.sl-w-full > div:last-child > div:last-child {
+        width: 100%;
+        margin: 0;
+        max-width: 100% !important;
+    }
+
+    /* make the URL inline in mobile so long URL will wrap */
+    .elementsBox div.sl-stack.sl-flex.sl-flex-col.sl-w-full > div:first-child > div:last-child > div:last-child > div:last-child {
+        display: inline;
+        font-size: 0.875rem;
+    }
+    /* hide the server part from the URL in mobile so it won't get to long */
+    .elementsBox div.sl-stack.sl-flex.sl-flex-col.sl-w-full > div:first-child > div:last-child > div:last-child > div:last-child > div:first-child {
+        display: none;
+    }
+}
+
+

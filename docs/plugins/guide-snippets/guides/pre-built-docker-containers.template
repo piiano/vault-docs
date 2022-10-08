@@ -1,0 +1,141 @@
+#!/bin/bash
+set -euo pipefail
+IFS=$'\n\t'
+
+# Allow alias expansions on non-interactive session.
+shopt -s expand_aliases
+
+# Prepare for CI.
+alias pvault="docker run --rm --net=host ${{ registry }}/pvault-cli:${{ dockerTag }} --addr http://localhost:8123"
+
+# Override if local.
+${{ cliTestLocalAlias }}
+
+#command:dockerRunVaultDev
+docker run --rm \
+  --name pvault-dev \
+  -p 8123:8123 \
+  -e PVAULT_DEVMODE=true \
+  -e PVAULT_SERVICE_LICENSE=${{ licenseToken }} \
+  -d \
+  ${{ runTestArgs }}${{ registry }}/pvault-dev:${{ dockerTag }}
+
+#output:dockerRunVaultDev
+#c3c4a111bd9124e246f289fa276331ab19645cf3982147647b5437a5bfc393cc
+
+# Wait for Vault to start.
+sleep 3
+
+# Make sure it's working.
+#command:pvaultStatus1
+pvault status
+
+#output:pvaultStatus1
+#+------+---------+
+#| DATA | CONTROL |
+#+------+---------+
+#| pass | pass    |
+#+------+---------+
+
+# Cleanup1.
+docker rm -f pvault-dev
+
+#output:Cleanup1
+#pvault-dev
+
+#########################
+
+#command:dockerRunPostgres
+docker run -p 5432:5432 \
+  --name pvault-db \
+  -e POSTGRES_DB=pvault \
+  -e POSTGRES_USER=pvault \
+  -e POSTGRES_PASSWORD=pvault \
+  -d \
+  postgres:13.5
+
+#output:dockerRunPostgres
+#716fe325b96311476f45b0a80a926ecd3b26d9ebb6d8682e5bffcd43e1e32002
+
+#command:dockerRunVaultServer
+docker run --rm \
+  --name pvault-server \
+  -p 8123:8123 \
+  -e PVAULT_DB_HOSTNAME=172.17.0.1 \
+  -e PVAULT_DEVMODE=true \
+  -e PVAULT_SERVICE_LICENSE=${{ licenseToken }} \
+  -d \
+  ${{ runTestArgs }}${{ registry }}/pvault-server:${{ dockerTag }}
+
+#output:dockerRunVaultServer
+#c3c4a111bd9124e246f289fa276331ab19645cf3982147647b5437a5bfc393cc
+
+# Wait for Vault to start.
+sleep 3
+
+# Make sure it's working.
+#command:pvaultStatus2
+pvault status
+
+#output:pvaultStatus2
+#+------+---------+
+#| DATA | CONTROL |
+#+------+---------+
+#| pass | pass    |
+#+------+---------+
+
+# Cleanup2.
+docker rm -f pvault-db pvault-server
+
+#output:Cleanup2
+#pvault-db
+#pvault-server
+
+#########################
+
+export PVAULT_SERVER_DOCKER_TAG=${{ registry }}/pvault-dev:${{ dockerTag }}
+
+#command:dockerRunServerCompose
+curl ${{ originWithBase }}assets/pvault_server.tar.gz | tar -xzf - && docker-compose up -d > /dev/null
+
+# Wait for Vault to start.
+sleep 3
+
+# Make sure it's working.
+#command:pvaultStatus3
+pvault status
+
+#output:pvaultStatus3
+#+------+---------+
+#| DATA | CONTROL |
+#+------+---------+
+#| pass | pass    |
+#+------+---------+
+
+# Cleanup3.
+docker-compose down
+
+#########################
+
+export PVAULT_CONTROL_DOCKER_TAG=${{ registry }}/pvault-control:${{ dockerTag }}
+export PVAULT_DATA_DOCKER_TAG=${{ registry }}/pvault-data:${{ dockerTag }}
+
+#command:dockerRunMiniCompose
+curl ${{ originWithBase }}assets/pvault_serverx.tar.gz | tar -xzf - && docker-compose up -d > /dev/null
+
+# Wait for Vault to start.
+sleep 2
+
+# Make sure it's working.
+#command:pvaultStatus4
+pvault status
+
+#output:pvaultStatus4
+#+------+---------+
+#| DATA | CONTROL |
+#+------+---------+
+#| pass | pass    |
+#+------+---------+
+
+# Cleanup4.
+docker-compose down

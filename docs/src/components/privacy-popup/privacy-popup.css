@@ -1,0 +1,38 @@
+.privacy-popup {
+    position: fixed;
+    right: 0;
+    bottom: 0;
+    z-index: 10;
+    margin: 1rem;
+    display: flex;
+    align-items: center;
+    gap: .75rem;
+    background: #ffffff;
+    border-radius: 2rem;
+    box-shadow: .1rem .2rem .75rem -.2rem rgba(0,0,0,.3);
+    padding: .6rem .85rem .5rem 1.25rem;
+    color: #4c32ab;
+    font-family: "Montserrat", Sans-serif, serif;
+}
+
+.privacy-popup a {
+    color: #4c32ab;
+    transition: all 100ms ease-in-out;
+}
+
+.privacy-popup a:hover {
+    text-shadow: 0 0 .05rem #4c32ab;
+}
+
+.privacy-popup .dismiss-btn {
+    cursor: pointer;
+    height: 1.75rem;
+    stroke-width: .03rem;
+    color: #9c9d9d;
+    transition: all 100ms ease-in-out;
+}
+
+.privacy-popup .dismiss-btn:hover {
+    transform: scale(1.05);
+    color: #686969;
+}

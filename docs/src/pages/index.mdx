@@ -1,0 +1,221 @@
+---
+title: Developers
+description: Explore guides and tutorials about how to work with Piiano Vault.
+hide_table_of_contents: true
+---
+import ButtonLink from '@site/src/components/ButtonLink';
+import Card from '@site/src/components/Card';
+import CardList from '@site/src/components/CardList';
+import TerminalWindow from '@site/src/components/TerminalWindow';
+import ChangelogList from '@site/src/components/ChangelogList';
+
+<h1 className="hero__title">Welcome</h1>
+<h2 className="hero__subtitle margin-top--none">Explore guides and tutorials about how to work with Piiano Vault.</h2>
+
+
+<section className="padding-top--lg">
+<div className="row">
+<div className="col col--6">
+<div className="col-demo padding-top--lg">
+
+## Get started with Piiano Vault
+Follow the step-by-step guide to get started with Piiano Vault.
+
+<ButtonLink size="large" className="margin-top--md margin-bottom--md" to="/guides/get-started/">Get started</ButtonLink>
+
+</div>
+</div>
+<div className="col col--6">
+<div className="col-demo">
+<TerminalWindow>
+
+```bash
+$ pvault collection add --collection-pvschema "
+customers PERSONS (
+    name NAME,
+    ssn SSN UNIQUE ENCRYPTED COMMENT 'Social security number',
+    email EMAIL
+)"
+$ pvault object add --collection customers --fields '{
+    "name": "John Doe",
+    "ssn": "123-12-1234",
+    "email": "john@somemail.com"
+}'
+```
+
+</TerminalWindow>
+</div>
+</div>
+</div>
+</section>
+
+---
+
+## Developer resources
+All the resources you need to work with Piiano Vault.
+
+<CardList>
+  <Card
+    title="Installation guide"
+    description="Discover how to run Piiano Vault on any platform, from local development to production environments."
+    icon="🚀"
+    link="Read the installation guide"
+    to="/guides/install"
+    />
+  <Card
+    title="API reference"
+    description="Explore the Piiano Vault REST API documentation and integrate Piiano Vault with your system."
+    icon="👩‍💻"
+    link="Explore the API reference"
+    to="/api"
+    />
+  <Card
+    title="CLI reference"
+    description="Learn about the Piiano Vault command-line interface."
+    icon="💻"
+    link="Explore the CLI reference"
+    to="/cli"
+    />
+</CardList>
+
+---
+
+## Guides
+Learn how to use Piiano Vault.
+
+<CardList>
+  <Card
+    title="Manage collections and schemas"
+    to="/guides/manage-collections-and-schemas"
+    description="Learn how to manage Piiano Vault collections and schemas."
+    link="Read the guidelines"
+    />
+  <Card
+    title="Write and read personal data"
+    to="/guides/write-and-read-personal-data"
+    description="Learn how to write and read personal data with Piiano Vault."
+    link="Read the guidelines"
+    />
+  <Card
+    title="Tokenize personal data"
+    to="/guides/tokenize-personal-data"
+    description="Learn how to tokenize personal data with Piiano Vault."
+    link="Read the guidelines"
+    />
+  <Card
+    title="Manage users and policies"
+    to="/guides/manage-users-and-policies"
+    description="Learn how to manage Piiano Vault users, roles, and policies."
+    link="Read the guidelines"
+    />
+  <Card
+    title="Configure"
+    to="/guides/configure"
+    description="Learn how to configure a Piiano Vault deployment to suit your needs."
+    link="Read the guidelines"
+    />
+  <Card
+    title="Monitor"
+    to="/guides/monitor"
+    description="Learn how to monitor your Piiano Vault deployment."
+    link="Read guidelines"
+    />
+</CardList>
+
+[View all guides →](/guides)
+
+---
+
+## Explore Piiano Vault
+Learn about the basic and advanced features of Piiano Vault.
+
+<section className="row reference">
+<div className="col col--4">
+<div className="col-demo">
+
+<h3>Data privacy</h3>
+
+* [Traceability](/data-privacy/traceability)  
+* [Individual privacy rights](/data-privacy/individual-privacy-rights)  
+* [Retention policies](/data-privacy/retention-policies)  
+* [Consent management and enforcement](/data-privacy/consent-management-and-enforcement)
+
+[Read more data privacy features →](/data-privacy)
+
+</div>
+</div>
+
+<div className="col col--4">
+<div className="col-demo">
+
+<h3>Data security</h3>
+
+* [Tokenization](/data-security/tokenization)  
+* [Transformations](/data-security/transformations)  
+* [Property encryption](/data-security/property-encryption)  
+* [Identity and access management](/data-security/identity-and-access-management)  
+
+[Read more data security features →](/data-security)
+
+</div>
+</div>
+
+<div className="col col--4">
+<div className="col-demo">
+
+<h3>Architecture</h3>
+
+* [Hierarchy](/architecture/hierarchy)  
+* [Components](/architecture/components)  
+* [Compare Piiano Vault editions](/architecture/editions)  
+
+</div>
+</div>
+</section>
+
+---
+
+## Updates from us
+Additions and changes to Piiano Vault.
+
+<section>
+<div className="row">
+<div className="col col--6">
+
+<div className="changelog-container padding--lg margin-bottom--md">
+
+<h3>What's new</h3>
+
+<ChangelogList count={5} className="margin-bottom--md" />
+
+[See all changes →](/changelog)
+
+</div>
+</div>
+<div className="col col-6">
+
+<div>
+
+<CardList columns={1}>
+  <Card
+    className="margin-bottom--md"
+    title="Upcoming features"
+    description="Get prepared for future changes to Piiano Vault."
+    to="/roadmap"
+    link="Review the public roadmap"
+    />
+</CardList>
+
+</div>
+</div>
+</div>
+</section>
+
+---
+
+## Still have questions?
+We're here to help. Get in touch with the support team.
+
+📬 [Email us at info@piiano.com](mailto:info@piiano.com)  
+💬 [Contact us](https://piiano.com/contact-us/)  
+🗓️ [Book a demo](https://calendly.com/piiano-founders/demo/)  

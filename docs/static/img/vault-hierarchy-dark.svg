@@ -1,0 +1,126 @@
+<svg id="Layer_1" data-name="Layer 1" xmlns="http://www.w3.org/2000/svg" xmlns:xlink="http://www.w3.org/1999/xlink" width="1141.31" height="1139.22" viewBox="0 0 1141.31 1139.22">
+  <defs>
+    <style>
+      .cls-1 {
+        fill: url(#linear-gradient);
+      }
+      .cls-12, .cls-2, .cls-3, .cls-6, .cls-9 {
+        fill: #fff;
+      }
+      .cls-3 {
+        font-size: 28.24px;
+      }
+      .cls-12, .cls-3 {
+        font-family: Montserrat-Medium, Montserrat, sans-serif, Ariel;
+        font-weight: 500;
+      }
+      .cls-4 {
+        fill: url(#linear-gradient-2);
+      }
+      .cls-5 {
+        fill: url(#linear-gradient-3);
+      }
+      .cls-6, .cls-9 {
+        stroke-miterlimit: 10;
+        stroke-width: 2px;
+        opacity: 0.3;
+      }
+      .cls-6 {
+        stroke: url(#linear-gradient-4);
+      }
+      .cls-7 {
+        fill: url(#linear-gradient-5);
+      }
+      .cls-8 {
+        fill: url(#linear-gradient-6);
+      }
+      .cls-9 {
+        stroke: url(#linear-gradient-7);
+      }
+      .cls-10 {
+        fill: url(#linear-gradient-8);
+      }
+      .cls-11 {
+        fill: url(#linear-gradient-9);
+      }
+
+      .cls-12 {
+        font-size: 26.08px;
+      }
+    </style>
+    <linearGradient id="linear-gradient" x1="677.74" y1="61.31" x2="677.74" y2="174.23" gradientUnits="userSpaceOnUse">
+      <stop offset="0" stop-color="#826fff"/>
+      <stop offset="1" stop-color="#4c32ab"/>
+    </linearGradient>
+    <linearGradient id="linear-gradient-2" x1="441.45" y1="301.43" x2="441.45" y2="414.35" gradientUnits="userSpaceOnUse">
+      <stop offset="0.11" stop-color="#ffa861"/>
+      <stop offset="1" stop-color="#ff7442"/>
+    </linearGradient>
+    <linearGradient id="linear-gradient-3" x1="234.27" y1="541.56" x2="234.27" y2="654.48" gradientUnits="userSpaceOnUse">
+      <stop offset="0" stop-color="#00a4fd"/>
+      <stop offset="0.27" stop-color="#0092f0"/>
+      <stop offset="0.81" stop-color="#0063ce"/>
+      <stop offset="0.91" stop-color="#005ac7"/>
+    </linearGradient>
+    <linearGradient id="linear-gradient-4" x1="234.27" y1="733.74" x2="234.27" y2="1089.94" xlink:href="#linear-gradient-3"/>
+    <linearGradient id="linear-gradient-5" x1="234.27" y1="734.74" x2="234.27" y2="807.66" xlink:href="#linear-gradient-3"/>
+    <linearGradient id="linear-gradient-6" x1="648.64" y1="541.56" x2="648.64" y2="654.48" xlink:href="#linear-gradient-3"/>
+    <linearGradient id="linear-gradient-7" x1="648.64" y1="733.74" x2="648.64" y2="1089.94" xlink:href="#linear-gradient-3"/>
+    <linearGradient id="linear-gradient-8" x1="648.64" y1="734.74" x2="648.64" y2="807.66" xlink:href="#linear-gradient-3"/>
+    <linearGradient id="linear-gradient-9" x1="910.02" y1="301.43" x2="910.02" y2="414.35" xlink:href="#linear-gradient-2"/>
+  </defs>
+  <rect class="cls-1" x="555.55" y="61.31" width="244.38" height="112.92"/>
+  <g>
+    <rect class="cls-2" x="642.69" y="665.6" width="9.81" height="49.2"/>
+    <polygon class="cls-2" points="658.28 713.32 653.66 713.32 642.57 713.32 637.95 713.32 648.12 723.62 658.28 713.32"/>
+  </g>
+  <g>
+    <rect class="cls-2" x="230.62" y="665.6" width="9.81" height="49.2"/>
+    <polygon class="cls-2" points="246.22 713.32 241.59 713.32 230.5 713.32 225.88 713.32 236.05 723.62 246.22 713.32"/>
+  </g>
+  <rect class="cls-2" x="672.83" y="183.53" width="9.81" height="56.2"/>
+  <g>
+    <path class="cls-2" d="M683.75,232.74H897.09a15.64,15.64,0,0,1,15.62,15.62v36.09h-8.48V248.36a7.15,7.15,0,0,0-7.14-7.14H683.75Z"/>
+    <polygon class="cls-2" points="918.32 282.97 913.7 282.97 902.6 282.97 897.98 282.97 908.15 293.27 918.32 282.97"/>
+  </g>
+  <g>
+    <path class="cls-2" d="M704.68,232.74H451.33a15.63,15.63,0,0,0-15.61,15.62v36.09h8.47V248.36a7.16,7.16,0,0,1,7.14-7.14H704.68Z"/>
+    <polygon class="cls-2" points="450.25 282.97 445.63 282.97 434.53 282.97 429.91 282.97 440.08 293.27 450.25 282.97"/>
+  </g>
+  <rect class="cls-2" x="438.8" y="422.35" width="9.81" height="56.2"/>
+  <g>
+    <path class="cls-2" d="M449.71,471.57H637.06a15.64,15.64,0,0,1,15.62,15.62v36.09H644.2V487.19a7.14,7.14,0,0,0-7.14-7.14H449.71Z"/>
+    <polygon class="cls-2" points="658.28 521.8 653.66 521.8 642.57 521.8 637.95 521.8 648.12 532.1 658.28 521.8"/>
+  </g>
+  <g>
+    <path class="cls-2" d="M470.65,471.57H247.3a15.64,15.64,0,0,0-15.62,15.62v36.09h8.48V487.19a7.14,7.14,0,0,1,7.14-7.14H470.65Z"/>
+    <polygon class="cls-2" points="246.22 521.8 241.59 521.8 230.5 521.8 225.88 521.8 236.05 532.1 246.22 521.8"/>
+  </g>
+  <text class="cls-3" transform="translate(595.93 128.35)">Vault Server</text>
+  <g>
+    <rect class="cls-4" x="248.81" y="301.43" width="385.29" height="112.92"/>
+    <text class="cls-3" transform="translate(281.45 369.84)">eCommerce App Vault</text>
+  </g>
+  <g>
+    <rect class="cls-5" x="41.62" y="541.56" width="385.29" height="112.92"/>
+    <text class="cls-3" transform="translate(174 592.96)">Partners<tspan x="-10.24" y="33.89">Collection</tspan></text>
+  </g>
+  <path class="cls-6" d="M41.62,734.74H426.91a0,0,0,0,1,0,0v342.58a11.61,11.61,0,0,1-11.61,11.61H53.23a11.61,11.61,0,0,1-11.61-11.61V734.74A0,0,0,0,1,41.62,734.74Z"/>
+  <rect class="cls-7" x="41.62" y="734.74" width="385.29" height="72.92"/>
+  <g>
+    <rect class="cls-8" x="456" y="541.56" width="385.29" height="112.92"/>
+    <text class="cls-3" transform="translate(505.54 592.96)">Partner&apos;s Customers<tspan x="72.6" y="33.89">Collection</tspan></text>
+  </g>
+  <text class="cls-3" transform="translate(161.4 780.15)">Properties</text>
+  <g>
+    <path class="cls-9" d="M456,734.74H841.29a0,0,0,0,1,0,0v342.58a11.61,11.61,0,0,1-11.61,11.61H467.61A11.61,11.61,0,0,1,456,1077.33V734.74A0,0,0,0,1,456,734.74Z"/>
+    <rect class="cls-10" x="456" y="734.74" width="385.29" height="72.92"/>
+    <text class="cls-3" transform="translate(575.77 780.15)">Properties</text>
+  </g>
+  <g>
+    <rect class="cls-11" x="717.37" y="301.43" width="385.29" height="112.92"/>
+    <text class="cls-3" transform="translate(795.38 369.84)">Loans App Vault</text>
+  </g>
+  <text class="cls-12" transform="translate(82.04 859.54)">First Name<tspan x="0" y="48">Last Name</tspan><tspan x="0" y="96">Partner Name</tspan><tspan x="0" y="144">Phone Number</tspan><tspan x="0" y="192">Email</tspan></text>
+  <text class="cls-12" transform="translate(493.72 859.54)">First Name<tspan x="0" y="48">Last Name</tspan><tspan x="0" y="96">Phone Number</tspan></text>
+</svg>

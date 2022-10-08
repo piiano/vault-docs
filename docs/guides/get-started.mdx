@@ -1,0 +1,178 @@
+---
+sidebar_position: 1
+description: Learn the basics of Piiano Vault.
+sidebar_label: Get started
+---
+import ButtonLink from '@site/src/components/ButtonLink';
+import GuideSnippet from '../src/components/GuideSnippet';
+import {RegisterInstruction, useLicense, HighlightAfterLogin} from '../src/components/registration';
+
+# Get started
+
+## Learn the basics of Piiano Vault.
+
+This quick start guide gives you a hands-on introduction to the fundamentals of Piiano Vault.  
+
+
+:::note Interactive lab
+This guide includes a free interactive lab with a pre-configured Piiano Vault instance to experiment with.
+
+<ButtonLink size="normal" to="/labs/basics/get-started/">Start interactive lab</ButtonLink>
+:::
+
+### Step 1: Install Piiano Vault locally
+
+Running Piiano Vault locally is the easiest way to get started. This installation is **not** suitable for production use.
+
+#### Prerequisites
+
+To install Piiano Vault locally, you need:  
+
+* A computer running macOS, Linux, or Windows
+* [Docker](https://docs.docker.com/get-docker/)
+
+#### Install Piiano Vault
+
+1. <HighlightAfterLogin><RegisterInstruction /></HighlightAfterLogin>
+
+2. <span id="get-started-snippet"></span> Pull and start the Piiano Vault server container, listening on the default Piiano Vault port of 8123: 
+  
+  <GuideSnippet className="no-wrap-long-lines" guide="get-started" command="dockerRunVault" variables={{ licenseToken: useLicense()?.token ?? "{LICENSE_KEY}" }} />
+  
+
+When the Docker container starts, you have a running Piiano Vault. You can access Piiano Vault on `http://localhost:8123` and interact with it using the [Piiano Vault API](/api) or the [Piiano CLI](/cli). The local API reference (hosted [here](/api)) allows you to experiment with the APIs directly from the browser.
+
+### Step 2: Connecting using the Piiano CLI
+
+The [Piiano CLI](/cli) is a built-in command-line tool to interact with Piiano Vault. The Piiano Vault server includes an up-to-date installation of the Piiano Vault CLI, but the CLI is also provided on a dedicated container image. To make working with the CLI `pvault` command easier, create an alias for it:
+
+<GuideSnippet guide="get-started" command="createCLIPvaultAlias" />
+
+You can now check the status of your Piiano Vault container to make sure it's running correctly:
+
+<GuideSnippet guide="get-started" command="pvaultStatus" />
+
+You should get this response:
+
+<GuideSnippet guide="get-started" output="pvaultStatus" />
+
+### Step 3: Create a collection
+
+Now you add a collection to Vault. You create a personal information aware collection like this:
+
+<GuideSnippet guide="get-started" command="pvaultAddCollection" />
+
+You should get a response similar to this:  
+
+<GuideSnippet guide="get-started" output="pvaultAddCollection" />
+
+### Step 4: Add data
+
+Now add some data:
+
+<GuideSnippet guide="get-started" keys={['commands.pvaultAddObject', 'commands.pvaultAddMoreObjects']} />
+
+As you add each person, you should get a response similar to this:
+
+<GuideSnippet guide="get-started" output="pvaultAddObject" />
+
+Now you can query the ID of the first person you created by email and save it in a variable so you can use it in the examples that follow:
+
+<GuideSnippet guide="get-started" command="saveFirstPersonID" />
+
+:::info
+**Add sensitive (encrypted) data**
+
+Data in Vault is encrypted at rest, guarded with granular access control, and fully audited. However, encrypting them in the database can further protect sensitive properties. This is done by setting the property as ENCRYPTED in the schema. Vault then automatically provides key provisioning and rotation. Once a property is encrypted, searching the property is limited to exact match only.
+:::
+
+### Step 5: Tokenize data
+
+Vault supports many options for tokenization of personal data. This enables a token to be created for items of sensitive data. The token can then be transmitted and stored outside Vault so authorized users can look up the referenced value, while others only see the anonymized token value.
+
+So, you tokenize an email address like this:
+
+<GuideSnippet guide="get-started" command="pvaultCreateToken" />
+
+Which returns the token:
+
+<GuideSnippet guide="get-started" output="pvaultCreateToken" />
+
+Now you can get the metadata for the token using `object-id` or `tag` and save it in a variable so you can use it in the examples that follow:
+
+<GuideSnippet guide="get-started" command="saveTokenID" />
+
+Authorized users can recover the email address by detokenizing like this:
+
+<GuideSnippet guide="get-started" command="pvaultDetokenizeToken" />
+
+Which returns:
+
+<GuideSnippet guide="get-started" output="pvaultDetokenizeToken" />
+
+### Step 6: Query your data
+
+You can perform two types of query. A plain query returns the data as stored in Vault, while a transformed query returns data after transformations have been applied. You can also combine plain and transformed content in a query.
+
+#### Plain query
+
+To query all persons:
+
+<GuideSnippet guide="get-started" command="pvaultListObjects" />
+
+Which returns:
+
+<GuideSnippet guide="get-started" output="pvaultListObjects" />
+
+To query the first person's SSN property:
+
+<GuideSnippet guide="get-started" command="pvaultGetObjectSSNByID" />
+
+This returns:
+
+<GuideSnippet guide="get-started" output="pvaultGetObjectSSNByID" />
+
+To query all properties of the first person:
+
+<GuideSnippet guide="get-started" command="pvaultGetAllObjectPropertiesByID" />
+
+Which returns:
+
+<GuideSnippet guide="get-started" output="pvaultGetAllObjectPropertiesByID" />
+
+#### Transformed query
+
+Vault provides desensitization of personal information by applying masks with transformations. Vault includes several built-in transformations, and future versions will enable you to add your own. Each transformation can act on any data of the same type, for example, masking emails, phone numbers and SSN.
+
+<GuideSnippet guide="get-started" command="pvaultGetMaskedObjectProperties" />
+
+This returns:
+
+<GuideSnippet guide="get-started" output="pvaultGetMaskedObjectProperties" />
+
+### Step 7: Delete data
+
+#### Delete data
+
+#### Delete token
+
+To delete a token:
+
+<GuideSnippet guide="get-started" command="pvaultDeleteToken" />
+
+Which returns:
+
+<GuideSnippet guide="get-started" output="pvaultDeleteToken" />
+
+To delete an item from a collection:
+
+<GuideSnippet guide="get-started" command="pvaultDeleteObject" />
+
+Which returns:
+
+<GuideSnippet guide="get-started" output="pvaultDeleteObject" />
+### Next steps
+
+* Check out more [guides](/guides) to get up and running.  
+* Review the [API reference](/api) and [CLI reference](/cli) to discover more commands.  
+* Learn how to [configure your deployment](configure) or [manage users and policies](manage-users-and-policies).  
