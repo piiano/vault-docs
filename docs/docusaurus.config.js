@@ -2,7 +2,7 @@
 // Note: type annotations allow type checking and IDEs autocompletion
 const path = require('path')
 const logger = require("@docusaurus/logger");
-require('ts-node/register') // allow import typescript plugins
+require('@swc-node/register')
 
 
 const lightCodeTheme = require('prism-react-renderer/themes/github');
@@ -15,7 +15,7 @@ const darkCodeTheme = {
     ...draculaTheme,
     // fix contrast of comments colors in the dracula theme
     styles: draculaTheme.styles.map(style =>
-      style.types.includes('comment') ? { ...style, style: { color: "rgb(138 170 231)" } } : style)
+        style.types.includes('comment') ? { ...style, style: { color: "rgb(138 170 231)" } } : style)
 }
 
 const isOnlineBuild = process.env.BUILD_FOR_ONLINE === 'true';
@@ -26,7 +26,7 @@ const vaultVersionsURL = parseURLSafely(process.env.VAULT_VERSIONS_API_URL)
 const vaultVersionsPath = vaultVersionsURL?.pathname
 const vaultVersionsOrigin = vaultVersionsURL?.origin
 const currentDocsBasePath = path.join('/', process.env.DOCS_BASE_PATH ?? '')
-const homeUrl = process.env.ONLINE_DOCS_URL
+const homeUrl = process.env.ONLINE_DOCS_URL ?? 'https://piiano.com'
 const basicAuthEnabled = process.env.ENABLE_WEBSITE_BASIC_AUTH
 
 const authDomain = process.env.WEBSITE_OAUTH_DOMAIN;
@@ -103,17 +103,17 @@ const config = {
                         to: '/introduction',
                         position: 'left',
                         label: 'Overview',
-                        activeBaseRegex: `^${currentDocsBasePath}/(?!guides|tutorials|changelog|cli|api|labs).+`
-                    },{
+                        activeBaseRegex: `^${currentDocsBasePath}/(?!guides|solutions|tutorials|changelog|cli|api|labs).+`
+                    }, {
                         to: '/guides',
                         position: 'left',
                         label: 'Guides',
                     },
-                    // {
-                    //     to: '/tutorials',
-                    //     position: 'left',
-                    //     label: 'Tutorials',
-                    // },
+                    {
+                        to: '/solutions',
+                        position: 'left',
+                        label: 'Solutions',
+                    },
                     // {
                     //     to: '/labs',
                     //     position: 'left',
@@ -166,22 +166,22 @@ const config = {
                     {
                         label: 'Terms',
                         href: `${homeUrl}/terms-of-use/`,
-                    },{
+                    }, {
                         label: 'Privacy',
                         href: `${homeUrl}/privacy-policy/`,
-                    },{
+                    }, {
                         label: 'Developers',
                         to: '/',
-                    },{
+                    }, {
                         label: 'Contact us',
                         href: `${homeUrl}/contact-us/`,
-                    },{
+                    }, {
                         label: 'Product',
                         href: `${homeUrl}/product/`,
-                    },{
+                    }, {
                         label: 'Blog',
                         href: `${homeUrl}/blog/`,
-                    },{
+                    }, {
                         label: 'About',
                         href: `${homeUrl}/company/`,
                     },
@@ -219,6 +219,12 @@ const config = {
             sidebarPath: require.resolve('./sidebars.js'),
         }],
         ['@docusaurus/plugin-content-docs', {
+            id: 'solutions',
+            path: 'solutions',
+            routeBasePath: 'solutions',
+            sidebarPath: require.resolve('./sidebars.js'),
+        }],
+        ['@docusaurus/plugin-content-docs', {
             id: 'tutorials',
             path: 'tutorials',
             routeBasePath: 'tutorials',
@@ -235,7 +241,7 @@ const config = {
             path: 'cli',
             routeBasePath: 'cli',
             sidebarPath: require.resolve('./sidebars.js'),
-        }],   
+        }],
         ['./plugins/guide-snippets', {
             id: 'guide-snippets',
             guidesPath: path.join(__dirname, './plugins/guide-snippets/guides'),
@@ -259,12 +265,12 @@ const config = {
             blogSidebarTitle: 'Changelog',
             blogSidebarCount: 'ALL',
             feedOptions: {
-              type: 'all',
-              title: 'Piiano Vault changelog',
-              description:
-                'Additions and changes to Piiano Vault',
-              copyright: `Copyright © ${new Date().getFullYear()} Piiano`,
-              language: 'en',
+                type: 'all',
+                title: 'Piiano Vault changelog',
+                description:
+                    'Additions and changes to Piiano Vault',
+                copyright: `Copyright © ${new Date().getFullYear()} Piiano`,
+                language: 'en',
             },
         }],
         ['./plugins/elements', {
@@ -272,14 +278,32 @@ const config = {
             openapiFile: '../openapi.yaml',
             openapiReferencesDir: './api/references',
             exportOpenAPI: [
-              './static/assets/openapi.yaml',
-              './static/assets/openapi.json'
+                './static/assets/openapi.yaml',
+                './static/assets/openapi.json'
             ],
             path: 'api',
             routeBasePath: 'api',
             sidebarPath: require.resolve('./sidebars.js'),
         }],
     ],
+
+    webpack: {
+        jsLoader: (isServer) => ({
+            loader: require.resolve('swc-loader'),
+            options: {
+                jsc: {
+                    parser: {
+                        syntax: 'typescript',
+                        tsx: true,
+                    },
+                    target: 'es2017',
+                },
+                module: {
+                    type: isServer ? 'commonjs' : 'es6',
+                },
+            },
+        }),
+    },
 };
 
 module.exports = config;

@@ -1,4 +1,4 @@
-Returns a [paginated list](/#pagination) of objects from a collection with all or a subset of object property values.
+Returns a [paginated list](/api/pagination) of objects from a collection with all or a subset of object property values.
 
 The role performing this operation must have both of the following:
 - The `CapDataReader` capability.

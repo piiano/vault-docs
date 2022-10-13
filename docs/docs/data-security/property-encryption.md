@@ -11,7 +11,7 @@ Data inside Vault is highly secure. Vault employs two industry-standard methods 
 
 Properties can be further protected by encrypting values before saving them in Vault's data store. This additional protection makes property values, the encrypted data, inaccessible through the database, such as if administrator credentials are used to access it directly.
 
-To enable this encryption on a property, indicate that it's encrypted in the [schema](/guides/manage-collections-and-schemas/about-collections). Vault then manages key provisioning and (coming soon :gift: ) rotation. Searches over these properties are limited to exact matches only.
+To enable this encryption on a property, indicate that it's encrypted in the [schema](/guides/manage-collections-and-schemas/about-collections). Vault then manages key provisioning and rotation. Searches over these properties are limited to exact matches only.
 
 From the application's view, accessing encrypted properties and handling encryption is fully transparent – Vault encrypts and decrypts the data automatically as it travels to or from the backend database. Technically, data is decrypted at runtime when it is fetched inside Vault.
 

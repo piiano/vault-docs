@@ -48,6 +48,7 @@ environment variables.
 | PVAULT_DB_MIGRATION_INITIAL_WAIT_BETWEEN_RETRIES | `string` |                          `20ms`                          |   All   | The initial wait duration between retries for the migration exponential backoff                                                                                                                                                                            |
 | PVAULT_DB_MIGRATION_MAX_WAIT_BETWEEN_RETRIES     | `string` |                           `5s`                           |   All   | The maximum wait duration between retries for the migration exponential backoff                                                                                                                                                                            |
 | PVAULT_DB_MIGRATION_MAX_RETRIES                  |  `int`   |                           `25`                           |   All   | The maximum number of retries attempts for the migration exponential backoff                                                                                                                                                                               |
+| PVAULT_DB_GC_GRACE_PERIOD_DAYS                   |  `int`   |                           `30`                           |   All   | The number of days deleted and expired objects and tokens are held before they are hard-deleted by the purge objects and tokens [REST API operation](/api/operations/garbage-collection) and [CLI command](/cli/reference#purge-objects-and-tokens).       |
 
 ### Key management service
 
@@ -82,10 +83,10 @@ see [Key management service](/data-security/property-encryption#key-management-s
 See [Logs](/guides/monitor/about-system-logs) for more information on logs and telemetry.
 
 | Name                           |   Type   | Default (Dev / Server) | Edition | Details                                                                                                                  |
-| :----------------------------- | :------: | :--------------------: | :-----: | :----------------------------------------------------------------------------------------------------------------------- |
+|:-------------------------------| :------: | :--------------------: | :-----: |:-------------------------------------------------------------------------------------------------------------------------|
 | PVAULT_LOG_LEVEL               | `string` |        `"info"`        |   All   | Log level (supports `debug`, `info`, `warn`, and  `error`)                                                               |
 | PVAULT_LOG_DATADOG_ENABLE      |  `bool`  |         `true`         |   All   | Enable Datadog logs and metrics                                                                                          |
-| PVAULT_LOG_DATADOG_SOURCE      | `string` |        `"prod"`        |   All   | Controls source field of logs sent to Datadog                                                                            |
+| PVAULT_LOG_DATADOG_ENV         | `string` |        `"prod"`        |   All   | Controls env field of logs sent to Datadog                                                                               |
 | PVAULT_LOG_DATADOG_APM_ENABLE  |  `bool`  |        `false`         |   All   | Enable Datadog application performance monitoring (APM)                                                                  |
 | PVAULT_SENTRY_ENABLE           |  `bool`  |         `true`         |   All   | Enable Sentry telemetry logging                                                                                          |
 | PVAULT_LOG_CUSTOMER_IDENTIFIER | `string` |          ` `           |   All   | Identifies the customer in all the observability platforms                                                               |

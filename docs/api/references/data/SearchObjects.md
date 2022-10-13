@@ -1,4 +1,4 @@
-Returns a [paginated list](/#pagination) of objects, with property values, from a collection that satisfies a query.
+Returns a [paginated list](/api/pagination) of objects, with property values, from a collection that satisfies a query.
 
 The role performing this operation must have all the following:
 - The `CapDataSearcher` capability.

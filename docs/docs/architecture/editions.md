@@ -1,5 +1,5 @@
 ---
-sidebar_position: 3
+sidebar_position: 4
 sidebar_label: Compare Piiano Vault editions
 title: Compare Piiano Vault editions
 ---

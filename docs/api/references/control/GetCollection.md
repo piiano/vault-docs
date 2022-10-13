@@ -22,7 +22,6 @@ Where these attributes map to the JSON properties like this:
 | PVSchema format keyword   | PVSchema values            | JSON property                            |
 |---------------------------|----------------------------|------------------------------------------|
 | `#Name`                   | `[property name]`          | `"name": "[property name]"`              |
-|                           | `#Name[]` or `#Name ARRAY` | `"is_array": true`                       |
 | `PIIType`                 | PII type name              | `"pii_type_name": [pii_type name]`       |
 | `IsUnique`                | `UNIQUE`/`NOT`             | `is_unique": true`/`is_unique": false`   |
 | `IsIndex`                 | `INDEX`                    | `"is_index": true`                       |
@@ -50,7 +49,6 @@ is the equivalent of
   "properties": [
     {
       "description": "First Name",
-      "is_array": false,
       "is_encrypted": false,
       "is_index": false,
       "is_nullable": true,
@@ -61,7 +59,6 @@ is the equivalent of
 
     {
       "description": "The object's email address.",
-      "is_array": false,
       "is_encrypted": false,
       "is_index": false,
       "is_nullable": true,

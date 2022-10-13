@@ -7,18 +7,8 @@
   margin-bottom: .5rem;
 }
 
-.httpMethod {
-  color: #ffffff;
-  padding: .1rem .3rem;
-  text-transform: uppercase;
-  font-weight: bold;
-  border-radius: .2rem;
-  display: inline-block;
-  margin-right: .5rem;
-  font-size: .75rem;
-}
-
 .apiPath {
+  margin-left: .5rem;
   font-family: var(--ifm-font-family-monospace);
   color: var(--ifm-color-content-secondary);
 }

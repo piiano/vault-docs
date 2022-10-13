@@ -1,13 +1,13 @@
 import React, {useEffect} from 'react';
-
 import {API} from '@stoplight/elements';
+import {usePluginData} from "@docusaurus/useGlobalData";
+import useIsBrowser from "@docusaurus/useIsBrowser";
+import {useLocation} from "@docusaurus/router";
+import {OpenAPISpec} from "@site/src/components/elements/openapi";
+
 // import '@stoplight/elements/styles.min.css';
 import './elements.min.css';
 import './custom.css';
-import {usePluginData} from "@docusaurus/useGlobalData";
-import {OpenAPISpec} from "@site/src/components/elements/openapi";
-import useIsBrowser from "@docusaurus/useIsBrowser";
-import {useLocation} from "@docusaurus/router";
 
 // Major CSS changes:
 // 1. Added ".elementsBox" selector to all of the rules, to scope it down to this page only.
@@ -18,7 +18,6 @@ function useOpenAPISpec(): OpenAPISpec {
   const {openapiSpec} = (usePluginData('docusaurus-plugin-elements', 'elements')) as {openapiSpec: OpenAPISpec };
   return openapiSpec
 }
-
 
 function Elements({path}: {path?: string}) {
   const isBrowser = useIsBrowser();

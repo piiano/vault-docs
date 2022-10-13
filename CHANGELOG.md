@@ -67,7 +67,6 @@ Vault now requires a valid license to startup. You can follow the instructions i
 - The maximum length of the value in encrypted and unencrypted string-based properties, including properties using PTypes for email address, SSN, and bank account number, is limited to 450 characters.
 - Encrypted arrays and arrays with mixed elements do not work as expected.
 - Large `int64` values may lose their precision.
-- TTL of an object does not affect owned objects, and those may outlive their owner.
 - Deletion of a collection will hard-delete its objects.
 - No pagination for tokens APIs: Get tokens metadata, Detokenization.
 - No pagination for "Get objects by IDs" API. When requesting a number of objects which exceeds the page size (see above), an error is returned.

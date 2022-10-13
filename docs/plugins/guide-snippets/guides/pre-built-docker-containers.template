@@ -24,7 +24,7 @@ docker run --rm \
 #c3c4a111bd9124e246f289fa276331ab19645cf3982147647b5437a5bfc393cc
 
 # Wait for Vault to start.
-sleep 3
+make -C ../../ wait-for-dev > /dev/null
 
 # Make sure it's working.
 #command:pvaultStatus1
@@ -71,7 +71,7 @@ docker run --rm \
 #c3c4a111bd9124e246f289fa276331ab19645cf3982147647b5437a5bfc393cc
 
 # Wait for Vault to start.
-sleep 3
+make -C ../../ wait-for-lite > /dev/null
 
 # Make sure it's working.
 #command:pvaultStatus2
@@ -99,7 +99,7 @@ export PVAULT_SERVER_DOCKER_TAG=${{ registry }}/pvault-dev:${{ dockerTag }}
 curl ${{ originWithBase }}assets/pvault_server.tar.gz | tar -xzf - && docker-compose up -d > /dev/null
 
 # Wait for Vault to start.
-sleep 3
+make -C ../../ wait-for-lite > /dev/null
 
 # Make sure it's working.
 #command:pvaultStatus3
@@ -124,7 +124,7 @@ export PVAULT_DATA_DOCKER_TAG=${{ registry }}/pvault-data:${{ dockerTag }}
 curl ${{ originWithBase }}assets/pvault_serverx.tar.gz | tar -xzf - && docker-compose up -d > /dev/null
 
 # Wait for Vault to start.
-sleep 2
+make -C ../../ wait-for-lite > /dev/null
 
 # Make sure it's working.
 #command:pvaultStatus4

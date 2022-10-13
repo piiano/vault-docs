@@ -47,7 +47,6 @@ To demonstrate this, create a new collection called `employees` using the user `
           "description": "The employee's email",
           "name": "email",
           "pii_type_name": "EMAIL",
-          "is_array": false,
           "is_unique": false,
           "is_index": false,
           "is_encrypted": false,
@@ -57,7 +56,6 @@ To demonstrate this, create a new collection called `employees` using the user `
           "description": "The employee's age",
           "name": "age",
           "pii_type_name": "INTEGER",
-          "is_array": false,
           "is_unique": false,
           "is_index": false,
           "is_encrypted": false,
@@ -78,36 +76,36 @@ To demonstrate this, create a new collection called `employees` using the user `
 3. This succeeds because the `Dashboard` user has the `CapCollectionsWriter` capability. You get a response similar to this:
     
     ```json
-    +------------+---------+--------------------------------+--------------------+---------------+----------+-----------+----------+--------------+-------------+------------+-------------+-------------------------------+-------------------------------+
-    | collection |  type   |          description           |        name        | pii_type_name | is_array | is_unique | is_index | is_encrypted | is_nullable | is_builtin | is_readonly |         creation_time         |       modification_time       |
-    +------------+---------+--------------------------------+--------------------+---------------+----------+-----------+----------+--------------+-------------+------------+-------------+-------------------------------+-------------------------------+
-    | employees  | PERSONS | The unique identifier of an    | _id                | OBJECT_ID     | false    | true      | true     | false        | false       | true       | true        | Wed, 20 Jul 2022 14:53:47 UTC | Wed, 20 Jul 2022 14:53:47 UTC |
-    |            |         | object in the collection.      |                    |               |          |           |          |              |             |            |             |                               |                               |
-    | employees  | PERSONS | The name of the collection in  | _owner_collection  | STRING        | false    | false     | false    | false        | true        | true       | false       | Wed, 20 Jul 2022 14:53:47 UTC | Wed, 20 Jul 2022 14:53:47 UTC |
-    |            |         | which the owner of the object  |                    |               |          |           |          |              |             |            |             |                               |                               |
-    |            |         | defined. For associated data,  |                    |               |          |           |          |              |             |            |             |                               |                               |
-    |            |         | this value identifies the      |                    |               |          |           |          |              |             |            |             |                               |                               |
-    |            |         | PERSONS collection containing  |                    |               |          |           |          |              |             |            |             |                               |                               |
-    |            |         | the owner.                     |                    |               |          |           |          |              |             |            |             |                               |                               |
-    | employees  | PERSONS | The ID of the owner of the     | _owner_id          | OBJECT_ID     | false    | false     | false    | false        | true        | true       | false       | Wed, 20 Jul 2022 14:53:47 UTC | Wed, 20 Jul 2022 14:53:47 UTC |
-    |            |         | object. For associated data,   |                    |               |          |           |          |              |             |            |             |                               |                               |
-    |            |         | this value identifies the      |                    |               |          |           |          |              |             |            |             |                               |                               |
-    |            |         | owning object in a PERSONS     |                    |               |          |           |          |              |             |            |             |                               |                               |
-    |            |         | collection.                    |                    |               |          |           |          |              |             |            |             |                               |                               |
-    | employees  | PERSONS | The ID that identifies the     | _foreign_id        | FOREIGN_ID    | false    | false     | false    | false        | true        | true       | false       | Wed, 20 Jul 2022 14:53:47 UTC | Wed, 20 Jul 2022 14:53:47 UTC |
-    |            |         | person in your application     |                    |               |          |           |          |              |             |            |             |                               |                               |
-    | employees  | PERSONS | The ID of the tenant with      | _tenant_id         | TENANT_ID     | false    | false     | false    | false        | true        | true       | false       | Wed, 20 Jul 2022 14:53:47 UTC | Wed, 20 Jul 2022 14:53:47 UTC |
-    |            |         | access privileges for this     |                    |               |          |           |          |              |             |            |             |                               |                               |
-    |            |         | object                         |                    |               |          |           |          |              |             |            |             |                               |                               |
-    | employees  | PERSONS | The time when the object was   | _creation_time     | TIMESTAMP     | false    | false     | false    | false        | false       | true       | true        | Wed, 20 Jul 2022 14:53:47 UTC | Wed, 20 Jul 2022 14:53:47 UTC |
-    |            |         | created                        |                    |               |          |           |          |              |             |            |             |                               |                               |
-    | employees  | PERSONS | The time when the object was   | _modification_time | TIMESTAMP     | false    | false     | false    | false        | false       | true       | true        | Wed, 20 Jul 2022 14:53:47 UTC | Wed, 20 Jul 2022 14:53:47 UTC |
-    |            |         | most recently modified         |                    |               |          |           |          |              |             |            |             |                               |                               |
-    | employees  | PERSONS | The time when the object will  | _expiration_time   | TIMESTAMP     | false    | false     | false    | false        | false       | true       | true        | Wed, 20 Jul 2022 14:53:47 UTC | Wed, 20 Jul 2022 14:53:47 UTC |
-    |            |         | be soft-deleted                |                    |               |          |           |          |              |             |            |             |                               |                               |
-    | employees  | PERSONS | The employee's email           | email              | EMAIL         | false    | false     | false    | false        | false       | false      | false       | Wed, 20 Jul 2022 14:53:47 UTC | Wed, 20 Jul 2022 14:53:47 UTC |
-    | employees  | PERSONS | The employee's age             | age                | INTEGER       | false    | false     | false    | false        | false       | false      | false       | Wed, 20 Jul 2022 14:53:47 UTC | Wed, 20 Jul 2022 14:53:47 UTC |
-    +------------+---------+--------------------------------+--------------------+---------------+----------+-----------+----------+--------------+-------------+------------+-------------+-------------------------------+-------------------------------+
+    +------------+---------+--------------------------------+--------------------+---------------+-----------+----------+--------------+-------------+------------+-------------+-------------------------------+-------------------------------+
+    | collection |  type   |          description           |        name        | pii_type_name | is_unique | is_index | is_encrypted | is_nullable | is_builtin | is_readonly |         creation_time         |       modification_time       |
+    +------------+---------+--------------------------------+--------------------+---------------+-----------+----------+--------------+-------------+------------+-------------+-------------------------------+-------------------------------+
+    | employees  | PERSONS | The unique identifier of an    | _id                | OBJECT_ID     | true      | true     | false        | false       | true       | true        | Wed, 20 Jul 2022 14:53:47 UTC | Wed, 20 Jul 2022 14:53:47 UTC |
+    |            |         | object in the collection.      |                    |               |           |          |              |             |            |             |                               |                               |
+    | employees  | PERSONS | The name of the collection in  | _owner_collection  | STRING        | false     | false    | false        | true        | true       | false       | Wed, 20 Jul 2022 14:53:47 UTC | Wed, 20 Jul 2022 14:53:47 UTC |
+    |            |         | which the owner of the object  |                    |               |           |          |              |             |            |             |                               |                               |
+    |            |         | defined. For associated data,  |                    |               |           |          |              |             |            |             |                               |                               |
+    |            |         | this value identifies the      |                    |               |           |          |              |             |            |             |                               |                               |
+    |            |         | PERSONS collection containing  |                    |               |           |          |              |             |            |             |                               |                               |
+    |            |         | the owner.                     |                    |               |           |          |              |             |            |             |                               |                               |
+    | employees  | PERSONS | The ID of the owner of the     | _owner_id          | OBJECT_ID     | false     | false    | false        | true        | true       | false       | Wed, 20 Jul 2022 14:53:47 UTC | Wed, 20 Jul 2022 14:53:47 UTC |
+    |            |         | object. For associated data,   |                    |               |           |          |              |             |            |             |                               |                               |
+    |            |         | this value identifies the      |                    |               |           |          |              |             |            |             |                               |                               |
+    |            |         | owning object in a PERSONS     |                    |               |           |          |              |             |            |             |                               |                               |
+    |            |         | collection.                    |                    |               |           |          |              |             |            |             |                               |                               |
+    | employees  | PERSONS | The ID that identifies the     | _foreign_id        | FOREIGN_ID    | false     | false    | false        | true        | true       | false       | Wed, 20 Jul 2022 14:53:47 UTC | Wed, 20 Jul 2022 14:53:47 UTC |
+    |            |         | person in your application     |                    |               |           |          |              |             |            |             |                               |                               |
+    | employees  | PERSONS | The ID of the tenant with      | _tenant_id         | TENANT_ID     | false     | false    | false        | true        | true       | false       | Wed, 20 Jul 2022 14:53:47 UTC | Wed, 20 Jul 2022 14:53:47 UTC |
+    |            |         | access privileges for this     |                    |               |           |          |              |             |            |             |                               |                               |
+    |            |         | object                         |                    |               |           |          |              |             |            |             |                               |                               |
+    | employees  | PERSONS | The time when the object was   | _creation_time     | TIMESTAMP     | false     | false    | false        | false       | true       | true        | Wed, 20 Jul 2022 14:53:47 UTC | Wed, 20 Jul 2022 14:53:47 UTC |
+    |            |         | created                        |                    |               |           |          |              |             |            |             |                               |                               |
+    | employees  | PERSONS | The time when the object was   | _modification_time | TIMESTAMP     | false     | false    | false        | false       | true       | true        | Wed, 20 Jul 2022 14:53:47 UTC | Wed, 20 Jul 2022 14:53:47 UTC |
+    |            |         | most recently modified         |                    |               |           |          |              |             |            |             |                               |                               |
+    | employees  | PERSONS | The time when the object will  | _expiration_time   | TIMESTAMP     | false     | false    | false        | false       | true       | true        | Wed, 20 Jul 2022 14:53:47 UTC | Wed, 20 Jul 2022 14:53:47 UTC |
+    |            |         | be soft-deleted                |                    |               |           |          |              |             |            |             |                               |                               |
+    | employees  | PERSONS | The employee's email           | email              | EMAIL         | false     | false    | false        | false       | false      | false       | Wed, 20 Jul 2022 14:53:47 UTC | Wed, 20 Jul 2022 14:53:47 UTC |
+    | employees  | PERSONS | The employee's age             | age                | INTEGER       | false     | false    | false        | false       | false      | false       | Wed, 20 Jul 2022 14:53:47 UTC | Wed, 20 Jul 2022 14:53:47 UTC |
+    +------------+---------+--------------------------------+--------------------+---------------+-----------+----------+--------------+-------------+------------+-------------+-------------------------------+-------------------------------+
     ```
     
 Now, attempt to add an object with the `Dashboard` user like this:

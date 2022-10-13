@@ -8,10 +8,6 @@ sidebar_position: 2.4
 
 You can obtain a list of all objects in a collection, returning all or a subset of their values. You can also request transformations of values, where available.
 
-:::note
-💡 Support for pagination is coming soon 🎁.
-:::
-
 You can use the `unsafe` option to get all the values of the objects (which is not recommended). Using `unsafe` can be combined with the `show_builtins` option to include the built-in properties. 
 
 Whether your request for all objects succeeds depends on the permissions you've been granted as part of the Vault’s identity and access management settings.

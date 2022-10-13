@@ -1,4 +1,4 @@
-Adds an object to a collection. The request must include all the non-nullable properties, as defined by the [collection schema](/operations/list-collection-properties).
+Adds an object to a collection. The request must include all the non-nullable properties, as defined by the [collection schema](/api/operations/list-collection-properties).
 
 The role performing this operation must have both of the following:
 - The `CapDataWriter` capability.

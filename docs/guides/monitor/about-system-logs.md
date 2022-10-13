@@ -23,7 +23,7 @@ Logs provide details about your interactions with Vault. To protect your busines
     "level": "info",
     "message": "Done",
     "method": "GET",
-    "path": "/api/pvlt/1.0/data/object/customers?id=a9a97bc6-4897-4f26-83a6-1884f71695c5&options=unsafe&reason=Analytics",
+    "path": "/api/pvlt/1.0/data/collections/customers/objects?id=a9a97bc6-4897-4f26-83a6-1884f71695c5&options=unsafe&reason=Analytics",
     "reason": "Analytics",
     "request_ip": "10.0.1.254",
     "server_trace_id": "0191c76e-a487-480b-b2c0-896e00a3e9d2",

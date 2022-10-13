@@ -1,4 +1,4 @@
-Returns a [paginated list](/#pagination) of the values of a property for objects in a collection.
+Returns a [paginated list](/api/pagination) of the values of a property for objects in a collection.
 
 The role performing this operation must have both of the following:
 - The `CapDataReader` capability.

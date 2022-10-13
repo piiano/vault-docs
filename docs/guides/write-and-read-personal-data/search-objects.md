@@ -8,10 +8,6 @@ sidebar_position: 2.5
 
 You can search for objects in a collection and return all or a subset of the found object’s values. You can also request transformations of values, where available.
 
-:::note
-💡 Support for pagination is coming soon 🎁.
-:::
-
 You can use `unsafe` option to get all the values of the objects (which is not recommended). Using `unsafe` can be combined with `show_builtins` option to include the built-in properties. 
 
 Whether your request for object values succeeds depends on the permissions you've been granted as part of the Vault’s identity and access management settings.
@@ -23,11 +19,7 @@ Whether your request for object values succeeds depends on the permissions you'v
 To search for objects in a collection you:
 
 1. Build a search query. 
-2. Use [CLI get an object by query](/cli/reference#get-an-object-by-query) or the [REST API get objects by query](/api/operations/search-objects) operation passing the property or properties you want to get and the collection name.
-
-:::note
-Search queries only support exact matches. Support for other search options is coming soon 🎁.  
-:::
+2. Use [CLI search objects](/cli/reference#search-objects) or the [REST API search objects](/api/operations/search-objects) operation passing the property or properties you want to get and the collection name.
 
 #### Step-by-step
 
@@ -86,7 +78,7 @@ Data types can have transformations. Several built-in translations are provided 
 To get transformed values of objects you search for you:
 
 1. Determine which transformed property values you want from each object.
-2. Use [CLI get an object by query](/cli/reference#get-an-object-by-query) or the [REST API get objects by query](/api/operations/search-objects) operation passing the IDs of the objects, the transformed properties, and collection name.
+2. Use [CLI search objects](/cli/reference#search-objects) or the [REST API search objects](/api/operations/search-objects) operation passing the IDs of the objects, the transformed properties, and collection name.
 
 :::note
 Search queries only support exact matches. Support for other search options is coming soon 🎁.  

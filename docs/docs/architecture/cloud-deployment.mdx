@@ -1,0 +1,32 @@
+---
+sidebar_position: 2
+---
+import ThemedImage from '@theme/ThemedImage';
+import useBaseUrl from '@docusaurus/useBaseUrl';
+import Zoom from '@site/src/components/Zoom';
+
+# Cloud Deployment
+
+Vault can be deployed on a cloud platform such as AWS, Google Cloud Platform, or Azure. On these platforms, Vault can be deployed as a server or serverless. For example, on Google Cloud Platform Vault can be deployed as a serverless service using Cloud Run. 
+
+Vault is implemented using two services: a Control service for making control changes such as IAM configuration and schema changes, and a Data service for CRUD operations on data. 
+
+The main elements in a Vault deployment are:
+* The Vault server. There can be one server running both services, or the services may be deployed separately.
+* The backend database. For example, Postgres RDS.
+* A load balancer or API gateway to manage access to the Vault services.
+
+This diagram shows an example of the high-level architecture in an AWS deployment.
+
+<div className="row">
+  <div className="col col--8 col--offset-2">
+    <div className="col-demo padding-top--md">
+      <Zoom>
+        <ThemedImage className="small" sources={{
+          light: useBaseUrl('/img/vault-aws-deployment-light.svg'),
+          dark: useBaseUrl('/img/vault-aws-deployment-dark.svg'),
+        }} alt="The Vault hierarchy"/>
+      </Zoom>
+    </div>
+  </div>
+</div>

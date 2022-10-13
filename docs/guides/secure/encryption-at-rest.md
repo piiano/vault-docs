@@ -7,7 +7,9 @@ sidebar_title: Encryption at rest
 
 ## Learn how to protect data at rest in Piiano Vault.
 
-Data that is encrypted at rest includes one or more of the following types of data:
+ By default, Vault encrypts these types of data at rest:
 
-* Back-end storage  
+* Back-end storage
 * Files
+* Properties of objects
+* Data of value tokens

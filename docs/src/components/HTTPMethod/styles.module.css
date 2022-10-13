@@ -1,0 +1,9 @@
+
+.httpMethod {
+  color: #ffffff;
+  padding: .1rem .5rem;
+  text-transform: uppercase;
+  font-weight: bold;
+  border-radius: .3rem;
+  display: inline-block;
+}

@@ -16,10 +16,6 @@ Whether your request to update object values succeeds depends on:
 
 If the operation fails an error message is returned, while no output means a successful update.
 
-:::info
-Vault does not support the selective modification of values in array data types in objects. To modify an array in an object, you must read the entire array, change it locally, and then provide the whole array back.
-:::
-
 ### Update an object to PERSONS collection
 
 #### Overview

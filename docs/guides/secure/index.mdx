@@ -1,5 +1,17 @@
 # Secure
 
+## Encryption in Vault
+
+Vault supports the encryption of data at rest and data in transit. Encryption for data at rest supports hard disk level encryption by the database backend used by Vault (for example, AWS RDS) and application level encryption by Vault.
+
+Both encryption types use keys stored in a KMS. If, for example, Vault is deployed on AWS, then AWS KMS is used by default. Regardless of the deployment method, you can provide your own KMS service in Vault's configuration.
+
+For encryption, Vault uses the Go version of [Tink](https://github.com/google/tink) by Google. The encryption algorithm used is AES256-GCM.
+
+For application-level encryption, all data types in Vault are encrypted by default.
+
+Vault provides for rotation of encryption keys, using the [rotate data encryption keys](/api/operations/rotate-keys) REST API operation.
+
 ## Learn how to secure an existing Piiano Vault deployment.
 
 import DocCardList from '@theme/DocCardList';

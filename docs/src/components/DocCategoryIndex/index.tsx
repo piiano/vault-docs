@@ -5,11 +5,19 @@ import ButtonLink from "../ButtonLink";
 import { useDocById } from "@docusaurus/theme-common/internal";
 
 // Filter categories that don't have a link.
-function filterItems(items) {
+function filterOnlyCategories(items) {
   return items.filter((item) => {
     return item.type === "category";
   });
 }
+
+// Filter categories that don't have a link.
+function filterOnlyDocs(items) {
+  return items.filter((item) => {
+    return item.type !== "category";
+  });
+}
+
 export default function DocCategoryIndex({
   items,
   className,
@@ -18,7 +26,22 @@ export default function DocCategoryIndex({
 }) {
   return (
     <>
-      {filterItems(items).map((item, index) => (
+      {filterOnlyCategories(items).map((item, index) => (
+        <Index key={index} item={item} columns={columns} cardLink={cardLink} />
+      ))}
+    </>
+  );
+}
+
+export function DocIndex({
+  items,
+  className,
+  cardLink,
+  columns = 3,
+}) {
+  return (
+    <>
+      {filterOnlyDocs(items).map((item, index) => (
         <Index key={index} item={item} columns={columns} cardLink={cardLink} />
       ))}
     </>

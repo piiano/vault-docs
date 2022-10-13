@@ -1,0 +1,28 @@
+
+.apiEndpointBox {
+    background: var(--color-canvas-50);
+    margin: 2rem 0;
+    display: inline-flex;
+    padding: .5rem 1rem;
+    font-size: .875rem;
+    max-width: 100%;
+    gap: 1rem;
+    align-items: center;
+    border-radius: var(--ifm-global-radius);
+
+}
+
+.apiEndpointPath {
+    overflow: hidden;
+    font-weight: bold;
+    font-family: var(--ifm-font-family-monospace);
+}
+
+@media only screen and (max-width: 996px) {
+    /* make the URL inline in mobile so long URL will wrap */
+    .apiEndpointBox {
+        font-size: 0.75rem;
+        padding: .5rem .75rem;
+        gap: .75rem;
+    }
+}

@@ -74,6 +74,24 @@ html[data-theme='dark'] .elementsBox pre.sl-code-viewer:not(.sl-inverted) span[s
     margin: 0;
 }
 
+
+/* hide elements api endpoint method and path */
+.elementsBox .HttpOperation > div:first-child {
+    display: none;
+}
+/* hide elements api description - we use docusaurus to render the description instead */
+.elementsBox .HttpOperation .HttpOperation__Description {
+    display: none;
+}
+/* remove the margin elements add between the description and the request */
+.elementsBox .HttpOperation > div:last-child > div:first-child > div:first-child > div:nth-child(2) {
+    margin-top: 0;
+}
+/* remove the security section of each operation since it can include broken links */
+.elementsBox .HttpOperation > div:last-child > div:first-child > div:first-child > div:nth-child(2) > div:nth-child(2) {
+    display: none;
+}
+
 @media only screen and (max-width: 996px) {
     /* change layout in mobile */
     .elementsBox div.sl-stack.sl-flex.sl-flex-col.sl-w-full > div:last-child {
@@ -90,16 +108,4 @@ html[data-theme='dark'] .elementsBox pre.sl-code-viewer:not(.sl-inverted) span[s
         margin: 0;
         max-width: 100% !important;
     }
-
-    /* make the URL inline in mobile so long URL will wrap */
-    .elementsBox div.sl-stack.sl-flex.sl-flex-col.sl-w-full > div:first-child > div:last-child > div:last-child > div:last-child {
-        display: inline;
-        font-size: 0.875rem;
-    }
-    /* hide the server part from the URL in mobile so it won't get to long */
-    .elementsBox div.sl-stack.sl-flex.sl-flex-col.sl-w-full > div:first-child > div:last-child > div:last-child > div:last-child > div:first-child {
-        display: none;
-    }
 }
-
-

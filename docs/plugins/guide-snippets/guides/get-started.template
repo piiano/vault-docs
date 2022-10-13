@@ -17,7 +17,7 @@ docker run --rm \
 #output:dockerRunVault
 #c3c4a111bd9124e246f289fa276331ab19645cf3982147647b5437a5bfc393cc
 
-sleep 3
+make -C ../../ wait-for-dev > /dev/null
 
 #command:createCLIPvaultAlias
 alias pvault="docker run --rm -i -v $(pwd):/pwd -w /pwd ${{ registry }}/pvault-cli:${{ dockerTag }}"

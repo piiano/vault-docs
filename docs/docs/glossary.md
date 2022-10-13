@@ -17,7 +17,7 @@ Data about an individual stored in a Vault collection.
 
 ### Associated data  
 
-Data associated with an object in the same or another collection. (Vault support relationships between objects in collections based on PERSONS and DATA schemas, support for other relationships coming soon 🎁.) 
+Data associated with an object in the same or another collection. Vault support relationships between objects in collections based on PERSONS and DATA schemas. 
 
 ### Personal Identifiable Information (PII)  
 

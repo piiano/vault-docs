@@ -32,11 +32,22 @@ export function apiPage(route: Route, sidebarPosition: number): string {
       description
     },
   })}
+import APIEndpoint from "@site/src/components/APIEndpoint";
 import Elements from "@site/src/components/elements";
 
 # ${route.title}
 
-<Elements path={'${route.slug}'}/>
+<APIEndpoint method="${route.method}" path="${route.apiPath}" />
+
+<div className="row">
+<div className="col col--7">
+
+${route.description}
+
+</div>
+</div>
+
+<Elements path={'${route.slug}'} />
 `
 }
 

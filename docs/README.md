@@ -1,41 +1,37 @@
-# Website
+# Vault Docs
 
-This website is built using [Docusaurus 2](https://docusaurus.io/), a modern static website generator.
+This repository has the sources of the [Piiano Vault documentation website](https://piiano.com/docs).
 
-### Installation
+It acts as a mirror for the private `docs` project used internally by Piiano.
 
-```
-$ yarn
-```
+### Contribution
+
+Any contribution is welcome.
+
+#### Forms of contribution:
+
+* Open an issue about a mistake/inaccuracy in a document.
+* Open an issue about a missing documentation.
+* Open a PR adding new/corrected content.
+
+PR's to this repo will be reviewed by the Vault core team and added to the private Vault monorepo.
+
+Once a PR is merged to the Vault monorepo it will eventually get to this repo by the repo mirroring.
 
 ### Local Development
 
-```
-$ yarn start
-```
+The Vault docs site is built using [Docusaurus 2](https://docusaurus.io/), a modern static website generator.
 
-This command starts a local development server and opens up a browser window. Most changes are reflected live without having to restart the server.
+Install dependencies:
 
-### Build
-
-```
-$ yarn build
+```bash
+yarn && ./prepare.sh
 ```
 
-This command generates static content into the `build` directory and can be served using any static contents hosting service.
+Starts a local development server and opens up a browser window:
 
-### Deployment
-
-Using SSH:
-
-```
-$ USE_SSH=true yarn deploy
+```bash
+yarn start
 ```
 
-Not using SSH:
-
-```
-$ GIT_USER=<Your GitHub username> yarn deploy
-```
-
-If you are using GitHub pages for hosting, this command is a convenient way to build the website and push to the `gh-pages` branch.
+Most changes are reflected live without having to restart the server.

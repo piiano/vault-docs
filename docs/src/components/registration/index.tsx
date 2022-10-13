@@ -61,7 +61,7 @@ const RegisterInstruction = () => {
     // Not logged in.
     return (
       <span>
-        <RegisterButton /> for a free license to activate Vault.
+        <RegisterButton /> for a free 30-days license to activate Vault.
       </span>
     );
   }
