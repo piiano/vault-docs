@@ -1,26 +1,24 @@
 # Vault Docs
 
-This repository has the sources of the [Piiano Vault documentation website](https://piiano.com/docs).
+This repository contains the sources of the [Piiano Vault documentation website](https://piiano.com/docs).
 
-It acts as a mirror for the private `docs` project used internally by Piiano.
+It mirrors the private `docs` project used internally by Piiano.
 
 ### Contribution
 
-Any contribution is welcome.
+All contributions are welcome.
 
-#### Forms of contribution:
+#### Forms of contribution
 
-* Open an issue about a mistake/inaccuracy in a document.
-* Open an issue about a missing documentation.
-* Open a PR adding new/corrected content.
+* Open an issue about a mistake or inaccuracy in a document.
+* Open an issue about missing documentation.
+* Open a PR adding new or corrected content.
 
-PR's to this repo will be reviewed by the Vault core team and added to the private `docs` project.
+The Vault team reviews PRs to this repo and adds them to the private `docs` project. Mirroring then reflects those PR changes to this repo.
 
-Once a PR is added to the internal private `docs` project it will eventually get to this repo by a mirroring.
+### Local development
 
-### Local Development
-
-The Vault docs site is built using [Docusaurus 2](https://docusaurus.io/), a modern static website generator.
+The Vault docs site uses [Docusaurus 2](https://docusaurus.io/), a modern static website generator.
 
 Install dependencies:
 
@@ -28,10 +26,10 @@ Install dependencies:
 yarn && ./prepare.sh
 ```
 
-Starts a local development server and opens up a browser window:
+Start a local development server:
 
 ```bash
 yarn start
 ```
 
-Most changes are reflected live without having to restart the server.
+Open a browser window at http://localhost:3000/docs to view your changes. Most changes are reflected live without having to restart the server.
